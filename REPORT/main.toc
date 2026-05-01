@@ -1,0 +1,88 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Motivation}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Research Contributions}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Executive Summary}{3}{section.2}%
+\contentsline {section}{\numberline {3}Mathematical Preliminaries}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Positive Semidefinite Matrices and Semidefinite Programs}{4}{subsection.3.1}%
+\contentsline {paragraph}{The IPM bottleneck.}{4}{equation.3.3}%
+\contentsline {subsection}{\numberline {3.2}Matrix Rank, Nuclear Norm, and Convex Relaxation}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Non-Convex Topology: Quotient Manifolds and Strict Saddles}{4}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Phase I: Burer-Monteiro Factorization in the Symmetric SDP Setting}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What Is the Burer-Monteiro Factorization?}{5}{subsection.4.1}%
+\contentsline {paragraph}{When does it work?}{5}{equation.4.9}%
+\contentsline {subsection}{\numberline {4.2}Empirical Verification of the Phase Transition}{5}{subsection.4.2}%
+\contentsline {paragraph}{Setup.}{5}{subsection.4.2}%
+\contentsline {paragraph}{Hypothesis.}{5}{subsection.4.2}%
+\contentsline {paragraph}{Results.}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Thinking About BM in Machine Learning: Implicit Regularization}{6}{subsection.4.3}%
+\contentsline {paragraph}{Setup.}{6}{subsection.4.3}%
+\contentsline {paragraph}{Results.}{6}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Phase II: Applying BM to Transformer Attention}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Context: The Transformer and Self-Attention}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Need for Asymmetric Factorization}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Modelling Attention as an Asymmetric BM Problem}{7}{subsection.5.3}%
+\contentsline {paragraph}{Classical matrix completion prediction.}{7}{equation.5.13}%
+\contentsline {paragraph}{Connection to implicit regularization.}{7}{equation.5.13}%
+\contentsline {subsection}{\numberline {5.4}The Geometric Warp Drive: Ablation Experiment}{7}{subsection.5.4}%
+\contentsline {paragraph}{Hypothesis.}{7}{subsection.5.4}%
+\contentsline {paragraph}{Results.}{7}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Why? The Softmax Jacobian Null Space}{7}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Empirical Exploration: Comparing Parameters}{8}{subsection.5.6}%
+\contentsline {paragraph}{Effect of precision.}{8}{subsection.5.6}%
+\contentsline {paragraph}{Effect of temperature.}{8}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}The Pataki Bound Fails: Moving Focus to Structure}{8}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Phase III: Margin Rank Theory}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}From Equalities to Margin Inequalities}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Setup: Applying Margin Rank Theory}{8}{subsection.6.2}%
+\contentsline {paragraph}{Hypothesis.}{8}{subsection.6.2}%
+\contentsline {paragraph}{How to apply it.}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}SDP Relaxation and KKT Dual Certificate}{9}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}The Identity Oracle: A Constructive Proof}{9}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}The ``Norm vs.\ Dimension'' Paradox and the Hard Bottleneck}{9}{subsection.6.5}%
+\contentsline {paragraph}{Failure.}{9}{subsection.6.5}%
+\contentsline {paragraph}{Analysis.}{9}{subsection.6.5}%
+\contentsline {paragraph}{Resolution.}{9}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}The Hard Bottleneck Predictor Algorithm}{9}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Theoretical Sketch: Correctness of the Hard Bottleneck}{10}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Phase III (Continued): Synthetic Validation}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Geometric Motif Matrices}{10}{subsection.7.1}%
+\contentsline {paragraph}{Block-Diagonal.}{10}{table.caption.3}%
+\contentsline {paragraph}{Identity.}{10}{table.caption.3}%
+\contentsline {paragraph}{Sparse Random.}{10}{table.caption.3}%
+\contentsline {subsection}{\numberline {7.2}Key Finding}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Empirical Validation on GPT-2}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Experimental Setup}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Results: Attention Sink Redundancy (Layer 4)}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Results: Heterogeneous Capacity Profiling (Layer 8)}{11}{subsection.8.3}%
+\contentsline {paragraph}{Head 10: The Semantic Router.}{11}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Implications for Transformer Architecture}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Typology of Attention Head Geometry}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The Power-Law of Language Geometry}{11}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Practical Applications}{11}{subsection.9.3}%
+\contentsline {paragraph}{Lossless Surgical Pruning (SVD Compression).}{11}{subsection.9.3}%
+\contentsline {paragraph}{Proxy-Driven Architectural Search.}{11}{subsection.9.3}%
+\contentsline {paragraph}{Dynamic Token Routing.}{11}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Empirical Equivalence of Factored L2 and Nuclear Norm Regularization in Asymmetric Burer-Monteiro Factorization}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Introduction}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Asymmetric BM Setting and the Question}{12}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Problem Statement: Matrix Sensing}{13}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}The Two Variants Under Comparison}{13}{subsubsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.4}Hypothesis}{13}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Methodology}{13}{subsection.10.5}%
+\contentsline {subsubsection}{\numberline {10.5.1}Problem Generation}{13}{subsubsection.10.5.1}%
+\contentsline {subsubsection}{\numberline {10.5.2}Optimization Setup}{13}{subsubsection.10.5.2}%
+\contentsline {subsubsection}{\numberline {10.5.3}Experimental Grid and Pairing}{13}{subsubsection.10.5.3}%
+\contentsline {subsubsection}{\numberline {10.5.4}Metrics}{14}{subsubsection.10.5.4}%
+\contentsline {subsection}{\numberline {10.6}Results and Discussion}{14}{subsection.10.6}%
+\contentsline {subsubsection}{\numberline {10.6.1}Rank Recovery and Penalty Equivalence}{14}{subsubsection.10.6.1}%
+\contentsline {subsubsection}{\numberline {10.6.2}Iteration Cost: A Practical Asymmetry}{14}{subsubsection.10.6.2}%
+\contentsline {subsubsection}{\numberline {10.6.3}Why the Iteration Cost Diverges}{15}{subsubsection.10.6.3}%
+\contentsline {subsection}{\numberline {10.7}Conclusion}{15}{subsection.10.7}%
+\contentsline {section}{\numberline {11}Discussion}{15}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Summary of the Research Journey}{15}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Limitations and Caveats}{15}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Future Work}{16}{section.12}%
+\contentsline {section}{\numberline {13}Conclusion}{16}{section.13}%
+\contentsline {section}{References}{16}{Item.19}%
+\contentsfinish 

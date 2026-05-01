@@ -1,0 +1,112 @@
+
+% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+% ============================================================
+
+\subsection{Summary of the Research Journey}
+
+The path from classical BM theory to Margin Rank was non-linear. Table~\ref{tab:journey}
+summarises the key conceptual transitions.
+
+\begin{table}[H]
+  \centering
+  \begin{adjustbox}{width=\columnwidth}
+  \begin{tabular}{lll}
+    \toprule
+    \textbf{Stage} & \textbf{Initial Assumption} & \textbf{What We Discovered} \\
+    \midrule
+    Classical BM    & Pataki bound gives $p^*$         & Bound inapplicable to asymmetric Softmax \\
+    Warp Drive      & Softmax is just a nonlinearity   & Softmax absorbs $n$ constraints via null space \\
+    Implicit Reg    & Nuclear norm oracle predicts $p^*$ & Norm-dimension paradox; lazy optimizer \\
+    Margin Rank     & Need SDP relaxation              & Hard Bottleneck sweep is the correct oracle \\
+    GPT-2           & All heads use similar capacity   & Heterogeneous landscape; 80--97\% redundancy \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+  \caption{Research journey: conceptual transitions and their causes.}
+  \label{tab:journey}
+\end{table}
+
+\subsection{Limitations and Caveats}
+
+\begin{itemize}
+  \item \textbf{Static attention.} The Hard Bottleneck Predictor requires a fixed,
+        pre-computed attention matrix. It cannot be applied during training without
+        significant overhead.
+  \item \textbf{Margin sensitivity.} The choice of $\gamma$ affects $p^*$; the theory does
+        not yet provide a principled method for selecting $\gamma$ from first principles.
+  \item \textbf{GPT-2 scale.} Our empirical profiling used GPT-2 (117M parameters). Whether
+        the heterogeneous capacity landscape and 80\% redundancy figures hold for frontier
+        models (GPT-4, LLaMA 3) remains an open empirical question.
+  \item \textbf{Conjecture~\ref{conj:strict_saddle}.} The strict saddle property of the
+        Softmax BM landscape at the corrected rank bound remains unproved.
+\end{itemize}
+
+% ============================================================
+\section{Future Work}
+\label{sec:future}
+% ============================================================
+
+Several open problems emerge directly from this work:
+
+\begin{enumerate}
+  \item \textbf{Completing the strict saddle proof.} The local surjectivity argument for the
+        Softmax Jacobian restricted to the active constraint manifold is the key missing piece
+        for a full proof of Conjecture~\ref{conj:strict_saddle}.
+  \item \textbf{Non-commutative gradient flow.} Proving or disproving the nuclear norm
+        implicit regularization conjecture in the non-commutative Softmax BM case.
+  \item \textbf{Frontier-model profiling.} Applying the Hard Bottleneck Predictor to LLaMA-3
+        and measuring whether Margin Rank scales sub-linearly with model depth.
+  \item \textbf{Training-time integration.} Designing a differentiable Margin Rank proxy
+        that can regularize $d_{\text{head}}$ during training, enabling Heterogeneous
+        Transformer training from scratch.
+  \item \textbf{Precision-dependent formula fitting.} A formula
+        \begin{equation}
+        \begin{aligned}
+            p^*(\varepsilon, \text{eff}_r, \tau, L)
+        \end{aligned}
+        \end{equation}
+        incorporating precision, effective rank, temperature, and
+        depth, fitted using \texttt{scipy.optimize.curve\_fit} with confidence intervals.
+\end{enumerate}
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% ============================================================
+
+This report has traced a complete research arc from classical Burer-Monteiro theory to a new
+framework---Margin Rank Theory---that mathematically characterises the true structural
+capacity of Transformer attention heads.
+
+Our central results are:
+\begin{enumerate}
+  \item The Barvinok-Pataki bound, while empirically verified in the symmetric SDP setting,
+        is fundamentally inapplicable to Softmax attention due to the asymmetric geometry and
+        the null space of the Softmax Jacobian.
+  \item The Softmax operator converts $m$ linear equality constraints into margin
+        inequalities, absorbing $n$ row-sum constraints and enabling an order-of-magnitude
+        dimensional compression (the Geometric Warp Drive: $p^*=2$ for an Identity matrix of
+        any size).
+  \item The Margin Rank of an attention head---the minimum embedding dimension required to
+        geometrically separate targets from distractors---is the correct measure of head
+        capacity, governed by topological complexity, not linear rank.
+  \item Real GPT-2 attention heads operate at 80--97\% dimensional redundancy, with clear
+        heterogeneous capacity requirements across heads in the same layer.
+\end{enumerate}
+
+These findings provide rigorous mathematical justification for the development of
+\textbf{Heterogeneous Transformers}: future architectures where head dimensions are
+dynamically allocated by Margin Rank profiling, promising substantial reductions in
+computational footprint without sacrificing semantic expressivity.
+
+\section*{Acknowledgements}
+
+This research was conducted as part of the IE210 Optimization Modelling course at IIT
+Bombay, 2026. The empirical experiments were implemented in PyTorch and CVXPY, with MOSEK
+as the convex solver baseline. GPT-2 attention tensors were extracted using the Hugging Face
+Transformers library.
+
+% ============================================================
+% \end{document}

@@ -1,0 +1,287 @@
+
+\section{Empirical Verification of the Burer-Monteiro Phase Transition}
+
+\textbf{Colab Notebook:} \url{https://colab.research.google.com/drive/1m3OLMe_SlhQb3WDk6MqO3NDWsWFSxigI?usp=sharing}
+
+\subsection{Introduction and Theoretical Foundations}
+Standard Semidefinite Programs (SDPs) represent a cornerstone of modern convex optimization, particularly useful as convex relaxations for notoriously difficult combinatorial and low-rank matrix problems. The standard trace-constrained form is formulated as:
+\begin{equation}
+    \min_{X} \text{Tr}(CX) \quad \text{subject to} \quad \text{Tr}(A_i X) = b_i, \quad X \succeq 0
+\end{equation}
+where $X \in \mathbb{R}^{n \times n}$ is a symmetric positive semidefinite (PSD) matrix, $C$ is the cost matrix, and $A_1 \dots A_m$ are symmetric constraint matrices. 
+
+While theoretically elegant because they guarantee the absence of spurious local minima, interior-point methods used to solve standard SDPs scale poorly. The computational complexity grows dramatically as $O(n^3)$ or worse, making large-scale instances computationally intractable \cite{sahiner2022scaling}.
+
+\subsubsection{The Burer-Monteiro Factorization and Spurious Minima}
+To circumvent this scaling bottleneck, the Burer-Monteiro (BM) factorization intentionally breaks the convexity of the problem. It enforces the PSD constraint implicitly by replacing the massive $n \times n$ matrix $X$ with a low-rank factorization \cite{burer2003nonlinear}:
+\begin{equation}
+    X = YY^T
+\end{equation}
+where $Y \in \mathbb{R}^{n \times p}$ and the rank parameter $p \ll n$. 
+
+This reduces the search space from $O(n^2)$ to $O(np)$ parameters. However, substituting $X = YY^T$ transforms the objective into a \textbf{non-convex} polynomial function in $Y$. In classical optimization, introducing non-convexity is perilous because it creates a landscape riddled with spurious local minima—"fake valleys" where gradient descent algorithms get irreversibly trapped before reaching the global optimum \cite{sahiner2022scaling}.
+
+\subsubsection{The Barvinok-Pataki Bound}
+The theoretical miracle of the Burer-Monteiro method is that under specific geometric conditions, the non-convex landscape is mathematically guaranteed to be free of spurious local minima \cite{cifuentes2022polynomial}. 
+
+The \textbf{Barvinok-Pataki Bound} \cite{barvinok1995problems, pataki1998rank} dictates that for an SDP with $m$ affine constraints, there always exists an optimal solution $X^*$ with an extreme rank $r$ satisfying:
+\begin{equation}
+    \frac{r(r+1)}{2} \le m
+\end{equation}
+Building on this, subsequent proofs have shown that if we select the search rank $p$ such that $p(p+1)/2 \ge m$, the parameter space is sufficiently over-parameterized. The underlying geometry of the factorization ensures that any local minimum encountered by a gradient descent algorithm is, in fact, a global minimum \cite{sahiner2022scaling, cifuentes2022polynomial}. 
+
+The core objective of this first experiment is to empirically map this boundary, verifying the exact phase transition where gradient descent ceases being trapped by local minima and successfully slides into the global optimum.
+
+\subsection{Methodology}
+To rigorously test this theoretical bound, we constructed an automated pipeline to generate random, guaranteed-feasible SDPs, compute their exact mathematical minimum, and attempt to reach that minimum using the non-convex BM factorization.
+
+\subsubsection{Ground Truth and Problem Generation}
+To ensure the randomly generated SDPs were bounded, well-posed, and strictly feasible, we utilized a reverse-engineering approach:
+\begin{enumerate}
+    \item \textbf{Ground Truth Matrix:} We first generated a random PSD ground truth matrix $X_{\text{true}} \in \mathbb{R}^{n \times n}$.
+    \item \textbf{Objective Matrix:} A random PSD cost matrix $C$ was generated to guarantee the objective function was bounded below by zero.
+    \item \textbf{Constraints:} We generated $m$ random symmetric constraint matrices $A_i$. Crucially, the right-hand constraint limits were explicitly set to perfectly accommodate the ground truth: $b_i = \text{Tr}(A_i X_{\text{true}})$. 
+\end{enumerate}
+
+\subsubsection{The Dual-Solver Architecture}
+We established a dual-solver framework to compare convex reliability against non-convex efficiency:
+\begin{enumerate}
+    \item \textbf{The Convex Baseline (CVXPY + MOSEK):} We passed the generated matrices $C, A, b$ to MOSEK, a commercial interior-point solver. Operating in the original convex $X$ space, MOSEK found the absolute global minimum, $val_{\text{opt}}$.
+    \item \textbf{The Non-Convex Solver (PyTorch):} We initialized $Y \in \mathbb{R}^{n \times p}$ randomly and optimized it using the L-BFGS algorithm. Because PyTorch is strictly an unconstrained optimizer, we incorporated the $m$ equality constraints into the loss function using a quadratic penalty method:
+    \begin{equation}
+        \mathcal{L}(Y) = \text{Tr}(C YY^T) + \lambda \sum_{i=1}^m \left( \text{Tr}(A_i YY^T) - b_i \right)^2
+    \end{equation}
+    \item \textbf{Continuation Method:} A major issue with penalty methods is ill-conditioning. If $\lambda$ is set too high initially, the gradients explode and the optimizer collapses. To counter this, we employed a \textit{Continuation Method}, exponentially scaling the penalty multiplier $\lambda$ from $10$ up to $10,000$ across sequential optimization stages, allowing the solver to smoothly find the feasible manifold before strictly enforcing it.
+\end{enumerate}
+
+\subsection{Experimental Execution and Code}
+The experiment was executed over a dense grid of parameters. We fixed the matrix dimension to $n=7$, swept the number of constraints $m \in [1, 28]$, and swept the search rank $p \in [1, 7]$. For each $(m, p)$ pair, we ran 10 independent trials with random seeds. 
+
+A trial was deemed a "success" if the final PyTorch objective value was within a $10^{-3}$ tolerance of the MOSEK global baseline. High-precision \texttt{float64} was strictly enforced across both solvers to prevent numerical underflow disparities.
+
+% \begin{lstlisting}[caption={Core PyTorch Optimization Loop with Penalty Continuation}]
+% def solve_pytorch_bm_cuda(n, p, m, C, A, b):
+%     C_t = torch.tensor(C, device=device)
+%     A_t = torch.stack([torch.tensor(a, device=device) for a in A])
+%     b_t = torch.tensor(b, device=device)
+    
+%     Y = torch.randn(n, p, device=device, requires_grad=True)
+%     lambda_schedule = [10.0, 100.0, 1000.0, 10000.0]
+    
+%     for lam in lambda_schedule:
+%         optimizer = torch.optim.LBFGS([Y], max_iter=100, 
+%                                       line_search_fn="strong_wolfe")
+%         def closure():
+%             optimizer.zero_grad()
+%             X_pred = Y @ Y.T
+%             obj = torch.trace(C_t @ X_pred)
+            
+%             preds = torch.sum(A_t * X_pred, dim=(1, 2))
+%             penalty = torch.sum((preds - b_t)**2)
+            
+%             loss = obj + lam * penalty
+%             loss.backward()
+%             return loss
+
+%         optimizer.step(closure)
+        
+%     final_X = (Y @ Y.T).detach()
+%     return torch.trace(C_t @ final_X).item()
+% \end{lstlisting}
+
+\subsection{Results and Discussion}
+The results of the $1,960$ total trials were aggregated into a phase transition heatmap. The Success Rate is plotted against the constraint count $m$ (y-axis) and the search rank $p$ (x-axis). 
+
+\begin{figure}[htbp]
+  \centering
+  \framebox{\parbox{0.8\textwidth}{\centering
+    \vspace{3cm}
+    \textbf{Image Placeholder} \\
+    \small\textit{Phase Transition Heatmap: Success Rate vs Constraints (m) and Rank (p).}
+    \vspace{3cm}
+  }}
+  \caption{Empirical Success Rate of the BM Factorization. The theoretical Barvinok-Pataki bound $m = p(p+1)/2$ dictates the transition threshold.}
+  \label{fig:heatmap}
+\end{figure}
+
+\subsubsection{Analysis of the Phase Transition Landscape}
+The empirical data yields a striking visual validation of the theoretical frameworks governing non-convex over-parameterization. We observe three distinct regions:
+
+\begin{itemize}
+    \item \textbf{The Non-Convex Abyss (Top-Left):} When $m \gg p(p+1)/2$, the success rate is strictly $0.0$. In this regime, the problem is highly constrained, but the matrix $Y$ lacks the columns (dimensions) necessary to maneuver. The landscape is densely populated with spurious local minima, permanently trapping the L-BFGS optimizer far above the global optimum.
+    
+    \item \textbf{The Safe Zone (Bottom-Right):} By simply increasing the search rank $p$ (over-parameterization), the success rate shifts abruptly to $1.0$. As predicted by the theorems transferred from Burer-Monteiro to neural networks, the addition of dimensions mathematically smooths out the local minima. "Fake valleys" cease to exist, creating continuous, unobstructed descent trajectories to the global optimum.
+    
+    \item \textbf{The Boundary Fringe:} Directly on the Barvinok-Pataki theoretical boundary ($m \approx p(p+1)/2$), the solver exhibits occasional failures (success rates fluctuating between $0.4$ and $0.8$). This instability is an artifact of algorithmic limitation, not mathematical existence. On the exact boundary, the continuous path to the global minimum exists, but it forms an exceptionally narrow, ill-conditioned ravine. Combined with the severe geometry of the heavy $\lambda = 10,000$ penalty landscape, the optimizer frequently zig-zags erratically along the constraint walls. It exhausts its \texttt{max\_iter=100} budget bouncing off the ravine walls, timing out before successfully dropping below our $10^{-3}$ tolerance. 
+\end{itemize}
+
+This boundary behavior highlights a critical practical reality: while the Barvinok-Pataki bound guarantees a solution exists, it does not guarantee a first-order optimizer can efficiently find it. This specific difficulty necessitates the "Smoothed Analysis" techniques explored in Chapter 3.
+
+\section{The Machine Learning Connection: Implicit Regularization}
+
+\textbf{Colab Notebook:} \url{https://colab.research.google.com/drive/1Lod9b9ub9jIbk2u671xL-VfdP8AVDfEn?usp=sharing}
+
+\subsection{Theoretical Background}
+Classical statistical learning theory posits that massively over-parameterized models—those possessing vastly more parameters than training data points—are highly susceptible to overfitting. Without explicit regularization penalties (e.g., $L_1$ or $L_2$ norms), such models typically memorize training noise and fail to generalize to unseen data.
+
+However, modern deep learning empirically contradicts this. Deep neural networks, despite being heavily over-parameterized, naturally generalize well when trained with simple gradient-based optimization. This phenomenon is known as \textbf{Implicit Regularization}. The Burer-Monteiro (BM) factorization provides a rigorous mathematical proxy to study this mechanism.
+
+\subsubsection{The Linear Neural Network Equivalence}
+Consider the asymmetric BM factorization of a matrix $Y \in \mathbb{R}^{n \times n}$ such that $Y = UV^T$, where $U, V \in \mathbb{R}^{n \times p}$. This formulation is mathematically isomorphic to a two-layer linear neural network without activation functions, where $U$ and $V$ represent the weight matrices of the layers, and $p$ represents the width of the hidden layer.
+
+When Gradient Descent is applied to optimize $Y$ over a subset of observed data (Matrix Completion), out of the infinite possible valid weight configurations, the optimization trajectory is intrinsically biased. Gunasekar et al. (2017) demonstrated that if the weights are initialized close to the origin, Gradient Flow implicitly biases the trajectory toward matrices with the lowest possible nuclear norm, effectively finding the minimum-rank solution without any explicit complexity penalty.
+
+\subsection{Experimental Design}
+To empirically verify this implicit bias, we constructed a Matrix Completion task simulating a recommendation system paradigm.
+
+\begin{itemize}
+    \item \textbf{Ground Truth:} A target matrix $M_{\text{true}} \in \mathbb{R}^{50 \times 50}$ was generated with a strict intrinsic rank of $r=3$.
+    \item \textbf{Observations:} A random mask was applied such that only $30\%$ of the entries ($750$ out of $2,500$) were visible to the optimizers.
+    \item \textbf{Convex Baseline:} MOSEK was utilized to explicitly minimize the Nuclear Norm ($\min \|X\|_*$) subject to matching the observed entries, establishing the mathematically optimal generalized baseline.
+    \item \textbf{Over-parameterized Networks:} Two PyTorch neural networks ($Y = UV^T$) were initialized with $p=50$, yielding $5,000$ trainable parameters. They were optimized using Stochastic Gradient Descent (SGD) on Mean Squared Error (MSE) over the visible entries.
+    \begin{itemize}
+        \item \textbf{Model A (Small Init):} Weights initialized via $\mathcal{N}(0, 10^{-3})$.
+        \item \textbf{Model B (Large Init - Benchmark):} Weights initialized via $\mathcal{N}(0, 1.0)$.
+    \end{itemize}
+\end{itemize}
+
+\begin{lstlisting}[caption={PyTorch SGD Setup for Implicit Regularization}]
+# Model A: Small Initialization (Triggers Implicit Bias)
+U_small = (torch.randn(N, N) * 1e-3).requires_grad_()
+V_small = (torch.randn(N, N) * 1e-3).requires_grad_()
+opt_small = torch.optim.SGD([U_small, V_small], lr=0.5)
+
+# Model B: Large Initialization (Control Group / Overfitting)
+U_large = (torch.randn(N, N) * 1.0).requires_grad_()
+V_large = (torch.randn(N, N) * 1.0).requires_grad_()
+opt_large = torch.optim.SGD([U_large, V_large], lr=0.01)
+
+# Training loop updates weights strictly on observed mask
+# loss = torch.sum(((Y_pred - M_t) * mask_t)**2) / torch.sum(mask_t)
+\end{lstlisting}
+
+\subsection{Results and Discussion}
+The experimental results demonstrate a stark contrast in generalization capabilities governed entirely by the initialization scale, confirming the implicit regularization hypothesis.
+
+\begin{figure}[htbp]
+  \centering
+  \framebox{\parbox{0.8\textwidth}{\centering
+    \vspace{3cm}
+    \textbf{Image Placeholder} \\
+    \small\textit{Implicit Regularization Trajectories.}
+    \vspace{3cm}
+  }}
+  \caption{Test vs Train MSE demonstrating Implicit Regularization based on initialization scale.}
+  \label{fig:implicit_reg}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \framebox{\parbox{0.8\textwidth}{\centering
+    \vspace{3cm}
+    \textbf{Image Placeholder} \\
+    \small\textit{Nuclear Norm Progression during Optimization.}
+    \vspace{3cm}
+  }}
+  \caption{Growth of the Nuclear Norm over training epochs for Model A and Model B.}
+  \label{fig:nuclear_norm}
+\end{figure}
+
+\subsubsection{Overfitting vs. Generalization}
+Model B (Large Init) behaved according to classical statistical expectations. Starting far from the origin, the network utilized its $5,000$ parameters to trivially perfectly fit the $750$ training points. However, its Test MSE on the hidden $70\%$ of the matrix remained exceptionally high, indicating severe overfitting. 
+
+Conversely, Model A (Small Init) successfully generalized. Despite possessing the exact same architecture, expressiveness, and optimizer as Model B, its Test MSE plummeted, converging closely with the performance of the MOSEK convex baseline. 
+
+\subsubsection{The Trajectory of the Nuclear Norm}
+The mechanism of this generalization is revealed by tracking the Nuclear Norm of the matrices during training. Model B's norm exploded to an arbitrary high value as it memorized noise. Model A's norm, however, grew slowly from near-zero and exactly asymptoted to the MOSEK optimal nuclear norm limit. 
+
+This confirms that the Burer-Monteiro geometric landscape, when traversed from the origin via Gradient Descent, fundamentally acts as a self-regularizing engine. It actively seeks out the lowest-rank, most compressible representation of the data, circumventing the curse of over-parameterization.
+
+
+\section{Polynomial Time Guarantees and Smoothed Analysis}
+
+\textbf{Colab Notebook:} \url{https://colab.research.google.com/drive/1V4k5K8RgpD1oRObZD5ygKexwhsHGIGiY?usp=sharing}
+
+\subsection{Theoretical Framework}
+While the Barvinok-Pataki bound identifies the rank $p$ at which a global solution to an SDP exists, it does not guarantee that a non-convex local search will find it in a reasonable timeframe. The primary contribution of Cifuentes and Moitra (2022) is providing the first \textbf{polynomial time guarantees} for the Burer-Monteiro method.
+
+This is achieved through two main theoretical pillars:
+\begin{itemize}
+    \item \textbf{Smoothed Analysis:} By applying a small random perturbation $\sigma$ to the cost matrix $C$, the algorithm avoids "bad" instances where spurious local minima exist. 
+    \item \textbf{AFAC Points:} The authors define \textit{Approximately Feasible Approximately 2-Critical} (AFAC) points, showing that these can be computed in polynomial time and are approximately optimal for the original SDP.
+\end{itemize}
+
+\subsection{Experimental Design: Smoothed Analysis}
+This experiment aims to replicate the "Smoothing" effect described in Section 6 of the reference text. We investigate why a solver might fail at the strict Barvinok-Pataki bound and how noise facilitates convergence.
+
+\subsubsection{The Criticality Challenge}
+At the exact bound $\tau(p) = m$, the optimization landscape is at its most "fragile". In our initial tests with $n=50, m=28, p=7$, a $0\%$ success rate was observed. This aligns with the authors' observation that previous analyses required $p$ to be significantly larger than the Barvinok-Pataki bound to ensure efficiency. To satisfy the polynomial time requirements of Theorem 1.2, we set:
+\begin{equation}
+    \tau(p) > (1+\eta)m
+\end{equation}
+By increasing the rank to $p=8$ ($\tau(8)=36$), we provide the necessary manifold smoothness for the optimizer to succeed.
+
+\subsubsection{Implementation of the Augmented Lagrangian Method}
+The authors note that the Burer-Monteiro problem is most effectively solved in practice using the \textbf{Augmented Lagrangian Method (ALM)}. Our implementation utilizes an ALM loop to find AFAC points:
+\begin{equation}
+    \mathcal{L}(Y, \lambda; \mu) = \text{Tr}(C YY^T) + \sum_{i=1}^m \lambda_i h_i(Y) + \frac{\mu}{2} \sum_{i=1}^m h_i(Y)^2
+\end{equation}
+where $h_i(Y) = \text{Tr}(A_i YY^T) - b_i$.
+
+\subsection{The Smoothed Analysis Algorithm}
+The experiment follows a "Smoothed" trajectory by perturbing a known "bad" SDP instance.
+
+\begin{lstlisting}[caption={Augmented Lagrangian with Smoothed Perturbation}]
+def solve_pytorch_alm(C_pert, A, b):
+    # Initialization
+    Y = torch.randn(N, P, requires_grad=True)
+    lambda_vec = torch.zeros(M)
+    mu = 10.0
+    
+    for outer in range(5):
+        # Inner optimization for AFAC point
+        optimizer = torch.optim.LBFGS([Y], max_iter=200)
+        
+        def closure():
+            optimizer.zero_grad()
+            X = Y @ Y.T
+            # Tr(C*X) + lambda*h(X) + (mu/2)*||h(X)||^2
+            loss = torch.trace(C_pert @ X) + torch.dot(lambda_vec, h(X)) + (mu/2)*torch.norm(h(X))**2
+            loss.backward()
+            return loss
+            
+        optimizer.step(closure)
+        
+        # Multiplier and Penalty Update (ALM)
+        lambda_vec += mu * h(Y @ Y.T).detach()
+        mu *= 5 
+    return torch.trace(C_pert @ (Y @ Y.T)).item()
+\end{lstlisting}
+
+\subsection{Results and Interpretation}
+    This part implementation was not sucessful, it needs to be debugged. The expected results are listed below.
+
+\begin{itemize}
+    \item \textbf{Unperturbed Case ($\sigma=0$):} The solver often stagnates in first-order critical points or narrow "tubular neighborhoods" of spurious solutions.
+    \item \textbf{Perturbed Case ($\sigma > 0$):} As predicted by Theorem 3.5, the bad set of cost matrices $\mathcal{C}_{\epsilon,\gamma}$ has vanishingly small probability when noise is introduced. 
+    \item \textbf{Numerical Convergence:} The criticality residual drops significantly faster in the perturbed instances, as the noise effectively widens the "tube" leading to the global optimum.
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{burer2003nonlinear}
+Burer, S., \& Monteiro, R. D. (2003). A nonlinear programming algorithm for solving semidefinite programs via low-rank factorization. \textit{Mathematical Programming (Series B)}, 95(2), 329-357.
+
+\bibitem{cifuentes2022polynomial}
+Cifuentes, D., \& Moitra, A. (2022). Polynomial Time Guarantees for the Burer-Monteiro Method.
+
+\bibitem{sahiner2022scaling}
+Sahiner, A., Ergen, T., Ozturkler, B., Pauly, J., Mardani, M., \& Pilanci, M. (2022). Scaling Convex Neural Networks with Burer-Monteiro Factorization.
+
+\bibitem{barvinok1995problems}
+Barvinok, A. I. (1995). Problems of distance geometry and convex properties of quadratic maps. \textit{Discrete \& Computational Geometry}, 13(2), 189-202.
+
+\bibitem{pataki1998rank}
+Pataki, G. (1998). On the rank of extreme matrices in semidefinite programs and the multiplicity of optimal eigenvalues. \textit{Mathematics of Operations Research}, 23(2), 339-358.
+
+\end{thebibliography}
