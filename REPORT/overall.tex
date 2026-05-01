@@ -171,7 +171,8 @@ matrices $\Sym^n$:
 \end{equation}
 where $C, A_i \in \Sym^n$.
 
-\paragraph{The IPM bottleneck.} Classical Interior Point Methods enforce the PSD constraint
+\subsubsection{The IPM Bottleneck}
+Classical Interior Point Methods enforce the PSD constraint
 via a logarithmic barrier $-\mu \log\det(Y)$. This guarantees finding the global
 optimum, but each Newton step requires computing and storing the Hessian of the barrier, costing
 $O(mn^3 + m^2 n^2)$ operations. Storing the $n\times n$ variable matrix alone requires
@@ -229,6 +230,7 @@ providing an escape direction and guaranteeing convergence to the global optimum
 
 \begin{figure}[H]
   \centering
+  \begin{adjustbox}{max width=\columnwidth}
   \begin{tikzpicture}
     \begin{axis}[
         clip=false,
@@ -245,6 +247,7 @@ providing an escape direction and guaranteeing convergence to the global optimum
         coordinates {(0,0,0) (0,1,-1) (0,2,-4)};
     \end{axis}
   \end{tikzpicture}
+  \end{adjustbox}
   \caption{A strict saddle on the BM quotient manifold. The surface $f(x,y)=x^2-y^2$ has
   zero gradient at the origin, yet a strictly negative Hessian eigenvalue in the
   $y$-direction creates a valley of descent. Stochastic noise projects onto this escape
@@ -272,7 +275,8 @@ This eliminates the PSD constraint (any $XX^\top$ is automatically PSD) and redu
 variables from $O(n^2)$ to $O(np)$. The cost is the destruction of convexity: the landscape
 is now a non-convex manifold with potential spurious local minima.
 
-\paragraph{When does it work?} The geometric viability of the BM factorization relies on
+\subsubsection{When does it work?}
+The geometric viability of the BM factorization relies on
 proving that a low-rank optimal solution exists within the original spectrahedron. This is
 guaranteed by the Barvinok-Pataki Theorem.
 
@@ -293,6 +297,7 @@ guaranteed by the Barvinok-Pataki Theorem.
 
 \begin{figure}[H]
   \centering
+  \begin{adjustbox}{max width=\columnwidth}
   \begin{tikzpicture}
     \begin{axis}[
         width=10cm, height=6cm,
@@ -315,6 +320,7 @@ guaranteed by the Barvinok-Pataki Theorem.
         {Spurious minima};
     \end{axis}
   \end{tikzpicture}
+  \end{adjustbox}
   \caption{The Barvinok-Pataki phase transition. As the inner rank $p$ crosses
   $p^* \approx \sqrt{2m}$, the probability of encountering spurious local minima collapses
   to zero.}
@@ -323,7 +329,8 @@ guaranteed by the Barvinok-Pataki Theorem.
 
 \subsection{Empirical Verification of the Phase Transition}
 
-\paragraph{Setup.} We empirically verify the Barvinok-Pataki bound using a dual-solver
+\subsubsection{Experimental Setup}
+We empirically verify the Barvinok-Pataki bound using a dual-solver
 architecture:
 \begin{itemize}
   \item \textbf{Convex baseline (CVXPY + MOSEK).} For each randomly generated SDP, MOSEK
@@ -336,11 +343,13 @@ We fix $n = 7$, sweep $m \in [1,28]$ and $p \in [1,7]$, and run 10 independent t
 $(m,p)$ cell. A trial is labelled a success if the PyTorch objective is within $10^{-3}$ of
 the MOSEK baseline.
 
-\paragraph{Hypothesis.} The empirical success rate should exhibit a sharp phase transition
+\subsubsection{Hypothesis}
+We hypothesize that the empirical success rate should exhibit a sharp phase transition
 at the theoretical boundary $m = p(p+1)/2$: 0\% success below the boundary and 100\%
 above.
 
-\paragraph{Results.} Three distinct regions are visible in the success-rate heatmap:
+\subsubsection{Results}
+Our results show that three distinct regions are visible in the success-rate heatmap:
 
 \begin{description}
   \item[Non-convex abyss (upper-left).] When $m \gg p(p+1)/2$, the landscape is
@@ -363,7 +372,8 @@ Having verified the BM landscape guarantees, we next investigated whether the BM
 structure induces a useful inductive bias---specifically, whether gradient descent implicitly
 minimizes the nuclear norm of the recovered matrix.
 
-\paragraph{Setup.} We construct a matrix completion task. A ground-truth matrix $M_{\text{true}}
+\subsubsection{Experimental Setup}
+We construct a matrix completion task. A ground-truth matrix $M_{\text{true}}
 \in \R^{50 \times 50}$ with intrinsic rank $r = 3$ is generated. A random mask reveals
 30\% of entries. Two over-parameterized BM networks $Y = UV^\top$ with $p = 50$ are trained
 with SGD on observed MSE:
@@ -374,7 +384,8 @@ with SGD on observed MSE:
         implicit bias; model memorizes training entries.
 \end{itemize}
 
-\paragraph{Results.} Model B (large init) trivially fits the observed entries but fails
+\subsubsection{Results}
+The experimental results show that Model B (large init) trivially fits the observed entries but fails
 catastrophically on the hidden 70\%, with nuclear norm exploding to an arbitrary high value.
 Model A (small init), despite identical architecture, achieves test MSE converging to the
 MOSEK baseline. Its nuclear norm grows slowly from near-zero and \emph{asymptotes precisely
@@ -437,13 +448,15 @@ The optimization objective is
 where $M \in \R^{n\times n}$ is a target attention matrix. Our central question is: what
 is the minimum rank $p^*$ such that~\eqref{eq:attn_obj} achieves zero loss?
 
-\paragraph{Classical matrix completion prediction.} In the linear (no-Softmax) case, this
+\subsubsection{Classical Matrix Completion Prediction}
+In the linear (no-Softmax) case, this
 is precisely the asymmetric BM factorization for recovering a matrix $M$ from $n^2$
 equality constraints $L_{ij} = M_{ij}$. Classical matrix completion theory (Cand\`{e}s
 and Recht, 2009) predicts that recovery requires $p \geq \sqrt{2 n^2} = n\sqrt{2}$, which
 for $n = 20$ yields $p^* \approx 28$---exceeding the sequence length itself.
 
-\paragraph{Connection to implicit regularization.} Frobenius regularization on $Q$ and $K$
+\subsubsection{Connection to Implicit Regularization}
+Frobenius regularization on $Q$ and $K$
 implicitly minimizes the nuclear norm of the logit matrix via identity~\eqref{eq:nuclear_identity}.
 This embedding is what allows us to import the symmetric BM convergence guarantees as a
 starting framework---while also clarifying exactly \emph{where} they break down when Softmax
@@ -459,12 +472,13 @@ two architectures across ranks $p \in \{1,\ldots,20\}$, averaging over 20 random
   \item \textbf{Softmax:} $\mathcal{L}_{\text{soft}} = \norm{\Softmax(QK^\top) - M}_F^2$.
 \end{itemize}
 
-\paragraph{Hypothesis.} The classical Pataki bound predicts $p^* \approx \sqrt{2 \cdot 20}
+\subsubsection{Hypothesis}
+We hypothesize that while the classical Pataki bound predicts $p^* \approx \sqrt{2 \cdot 20}
 \approx 6.32$ for both architectures. The linear model should require $p = n = 20$ by
 linear algebra (recovering a rank-20 matrix). If Softmax induces any compression, it should
 manifest as a smaller $p^*$.
 
-\paragraph{Results.}
+\subsubsection{Results}
 
 \begin{description}
   \item[Linear factorization.] Success rate is 0\% for all $p < 20$ and jumps to 100\% only
@@ -517,7 +531,8 @@ already drastically tighter than the linear bound.
 \subsection{Empirical Exploration: Comparing Parameters}
 \label{sec:param_comparison}
 
-\paragraph{Effect of precision.} We swept the success-rate threshold $\varepsilon \in
+\subsubsection{Effect of Precision}
+We swept the success-rate threshold $\varepsilon \in
 \{10^{-3}, 10^{-5}, 10^{-8}\}$ across ranks $p \in \{1,\ldots,20\}$ for multiple target
 structures. The minimum feasible rank $p^*(\varepsilon)$ increases with precision: achieving
 $\varepsilon = 10^{-8}$ for the Identity matrix requires $p^* = 3$ (a 3D spherical
@@ -529,7 +544,8 @@ The success rate exhibits non-monotone behaviour with $p$: excessive over-parame
 ($p \gg r$) introduces optimization noise that hinders high-precision convergence. A
 \texttt{ReduceLROnPlateau} scheduler was required to ``zoom in'' on the narrow global minimum.
 
-\paragraph{Effect of temperature.} Sweeping the Softmax temperature $\tau \in
+\subsubsection{Effect of Temperature}
+Sweeping the Softmax temperature $\tau \in
 \{0.1, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0\}$ at fixed precision $\varepsilon = 10^{-5}$, the
 minimum rank $p^*(\tau)$ varies across the temperature range. Lower temperatures (sharper
 Softmax) amplify the separation between target and distractor logits, reducing the margin
@@ -585,13 +601,15 @@ separation).
 
 \subsection{Setup: Applying Margin Rank Theory}
 
-\paragraph{Hypothesis.} Margin Rank, not linear rank, is the correct measure of structural
+\subsubsection{Hypothesis}
+Our primary hypothesis is that Margin Rank, not linear rank, is the correct measure of structural
 capacity for a Transformer attention head. Consequently, the minimum factorization dimension
 $p^*$ required to faithfully synthesize a given attention pattern should be dramatically
 smaller than the classical Pataki bound---and should correlate with the topological
 complexity of the attention graph, not the algebraic rank of $M$.
 
-\paragraph{How to apply it.} Given a target attention matrix $M$, we:
+\subsubsection{Application Methodology}
+To apply this theory, given a target attention matrix $M$, we:
 \begin{enumerate}
   \item Compute binary masks: $\mathcal{T}_{ij} \leftarrow \mathbb{I}[M_{ij} > 0.5]$,
         $\mathcal{D}_{ij} \leftarrow \mathbb{I}[M_{ij} \leq 0.5]$.
@@ -654,10 +672,12 @@ Having established that $p^*$ is governed by margin inequalities, we initially a
 predict $p^*$ by directly optimizing the primal SDP via Hinge Loss and implicit
 regularization, using the resulting nuclear norm as a proxy for rank.
 
-\paragraph{Failure.} The algorithm predicted $p^* = 20$ for the Identity matrix---the exact
+\subsubsection{Failure of Implicit Regularization}
+The algorithm predicted $p^* = 20$ for the Identity matrix---the exact
 opposite of the true answer of $p^* = 2$.
 
-\paragraph{Analysis.} This failure exposed a fundamental tension between vector magnitude
+\subsubsection{Analysis of the Failure}
+This failure exposed a fundamental tension between vector magnitude
 and dimensionality. To satisfy a hard margin $\gamma = 1$ in low dimensions ($p=2$), token
 vectors must expand to a large radius $R$ to avoid angular crowding, incurring a large trace
 norm ($\tr(X) \approx nR^2$). In high dimensions ($p=20$), standard orthogonal unit vectors
@@ -665,7 +685,8 @@ achieve the same margin with $\tr(X) \approx n$. Unconstrained gradient descent 
 \emph{lazy}: it prefers the energetically cheap high-dimensional solution over the
 structurally minimal low-dimensional one.
 
-\paragraph{Resolution.} To compute the true Margin Rank, we must abandon implicit
+\subsubsection{Resolution via Hard Bottleneck}
+To correctly compute the true Margin Rank, we must abandon implicit
 regularization entirely and enforce an \emph{explicit Hard Bottleneck}: restrict $p$ to a
 fixed integer and test whether the spatial geometry can satisfy the margin constraints.
 
@@ -762,15 +783,18 @@ geometric motif matrices ($n = 20$), each representing a distinct structural com
   \label{tab:motif_results}
 \end{table}
 
-\paragraph{Block-Diagonal.} Two semantic clusters with uniform within-cluster attention
+\subsubsection{Block-Diagonal Motif}
+For the block-diagonal motif, two semantic clusters with uniform within-cluster attention
 require only a one-dimensional embedding: a single axis projects the two clusters to
 opposite extremes.
 
-\paragraph{Identity.} Twenty mutually exclusive attention targets require a 2D circular
+\subsubsection{Identity Motif}
+For the identity motif, twenty mutually exclusive attention targets require a 2D circular
 embedding at low precision and a 3D spherical arrangement at high precision ($\varepsilon =
 10^{-8}$) to maximize angular separation between all 20 points.
 
-\paragraph{Sparse Random.} High-entropy chaotic attention graphs require higher
+\subsubsection{Sparse Random Motif}
+For the sparse random motif, high-entropy chaotic attention graphs require higher
 dimensionality because irregular target sets impose conflicting margin constraints that only
 higher-dimensional geometry can resolve without collision.
 
@@ -835,7 +859,8 @@ The Layer 8 sweep reveals a heterogeneous capacity landscape:
         complex long-range noun-verb dependencies.
 \end{itemize}
 
-\paragraph{Head 10: The Semantic Router.} Head 10's $p^* = 5$ represents the true capacity
+\subsubsection{Head 10: The Semantic Router}
+Head 10's $p^* = 5$ represents the true capacity
 bottleneck of this layer. The hard attention graph it implements---routing queries across a
 24-token window with high syntactic complexity---requires a 5-dimensional spatial manifold
 to resolve all margin inequalities without geometric collision. Even so, this is a
@@ -872,7 +897,7 @@ remains drastically below the linear rank bound $n$.
 
 \subsection{Practical Applications}
 
-\paragraph{Lossless Surgical Pruning (SVD Compression).}
+\subsubsection{Lossless Surgical Pruning (SVD Compression)}
 For existing pre-trained models (LLaMA, Mistral, GPT-2), Margin Rank provides a
 \emph{deterministic, surgical pruning map}: compute $p^*$ for every head, then apply SVD
 to compress the $Q$ and $K$ weight matrices:
@@ -884,13 +909,13 @@ This mathematically guarantees preservation of the operational Softmax geometry 
 maximising hardware compression---in contrast to uniform pruning, which blindly discards
 capacity regardless of geometric necessity.
 
-\paragraph{Proxy-Driven Architectural Search.}
+\subsubsection{Proxy-Driven Architectural Search}
 Geometric motifs in human language (syntax, induction, attention sinks) are scale-invariant.
 Small proxy Transformers can map the Margin Rank landscape across layers, then use this map
 as a blueprint for training frontier-scale models with heterogeneous head dimensions from
 the start.
 
-\paragraph{Dynamic Token Routing.}
+\subsubsection{Dynamic Token Routing}
 Future hardware supporting dynamic sparse computation can exploit Margin Rank by first
 computing a low-rank ($d=2$) attention approximation for every head, only triggering the
 full-rank ($d=64$) dot-product when a token exhibits high geometric entropy (i.e., when its

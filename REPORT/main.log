@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 03:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 03:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1100,7 +1100,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.27 \usepackage
+l.28 \usepackage
                 {colortbl}
 The package xcolor has already been loaded with options:
   []
@@ -1124,301 +1124,22 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count348
-\c@ALC@line=\count349
-\c@ALC@rem=\count350
-\c@ALC@depth=\count351
-\ALC@tlm=\skip82
-
-
-! LaTeX Error: Command \algorithmicindent already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.51 \newlength{\algorithmicindent}
-                                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.52 \setlength{\algorithmicindent}{0pt}
-                                        
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.53 \define@key
-                {ALG}{indent}{\setlength{\algorithmicindent}{#1}}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \let 
-l.53 \define@key
-                {ALG}{indent}{\setlength{\algorithmicindent}{#1}}
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-
-! LaTeX Error: Command \algorithmicrequire already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...nd{\algorithmicrequire}{\textbf{Require:}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicensure already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67 ...mand{\algorithmicensure}{\textbf{Ensure:}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmiccomment already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.68 \newcommand{\algorithmiccomment}[1]{\{#1\}}
-                                                
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicend already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.69 \newcommand{\algorithmicend}{\textbf{end}}
-                                               
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicif already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.70 \newcommand{\algorithmicif}{\textbf{if}}
-                                             
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicthen already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.71 \newcommand{\algorithmicthen}{\textbf{then}}
-                                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicelse already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.72 \newcommand{\algorithmicelse}{\textbf{else}}
-                                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicfor already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 \newcommand{\algorithmicfor}{\textbf{for}}
-                                               
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicforall already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.76 ...mand{\algorithmicforall}{\textbf{for all}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicdo already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.77 \newcommand{\algorithmicdo}{\textbf{do}}
-                                             
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicwhile already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.79 ...command{\algorithmicwhile}{\textbf{while}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicloop already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 \newcommand{\algorithmicloop}{\textbf{loop}}
-                                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicrepeat already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 ...mmand{\algorithmicrepeat}{\textbf{repeat}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicuntil already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 ...command{\algorithmicuntil}{\textbf{until}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmicreturn already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.86 ...mmand{\algorithmicreturn}{\textbf{return}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command \algorithmic already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.229 {\end{list}}
-                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2022-02-02 v3.0.46 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen347
 \l__siunitx_angle_marker_box=\box76
 \l__siunitx_angle_unit_box=\box77
-\l__siunitx_compound_count_int=\count352
+\l__siunitx_compound_count_int=\count348
 
 (/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/01/04 v1.11 internationalization of LaTeX2e packages
  (CN)
 )
-\l__siunitx_number_exponent_fixed_int=\count353
-\l__siunitx_number_min_decimal_int=\count354
-\l__siunitx_number_min_integer_int=\count355
-\l__siunitx_number_round_precision_int=\count356
-\l__siunitx_number_group_minimum_int=\count357
+\l__siunitx_number_exponent_fixed_int=\count349
+\l__siunitx_number_min_decimal_int=\count350
+\l__siunitx_number_min_integer_int=\count351
+\l__siunitx_number_round_precision_int=\count352
+\l__siunitx_number_group_minimum_int=\count353
 \l__siunitx_table_tmp_box=\box78
 \l__siunitx_table_tmp_dim=\dimen348
 \l__siunitx_table_column_width_dim=\dimen349
@@ -1428,9 +1149,9 @@ Package: translations 2022/01/04 v1.11 internationalization of LaTeX2e packages
 \l__siunitx_table_after_box=\box82
 \l__siunitx_table_before_dim=\dimen350
 \l__siunitx_table_carry_dim=\dimen351
-\l__siunitx_unit_tmp_int=\count358
-\l__siunitx_unit_position_int=\count359
-\l__siunitx_unit_total_int=\count360
+\l__siunitx_unit_tmp_int=\count354
+\l__siunitx_unit_position_int=\count355
+\l__siunitx_unit_total_int=\count356
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -1438,7 +1159,7 @@ Package: expl3 2022-01-21 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count361
+\l__color_backend_stack_int=\count357
 \l__pdf_internal_box=\box83
 ))
 Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
@@ -1448,23 +1169,23 @@ Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
 
 Excluding comment 'comment')
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count362
+\lst@mode=\count358
 \lst@gtempboxa=\box84
 \lst@token=\toks59
-\lst@length=\count363
+\lst@length=\count359
 \lst@currlwidth=\dimen352
-\lst@column=\count364
-\lst@pos=\count365
+\lst@column=\count360
+\lst@pos=\count361
 \lst@lostspace=\dimen353
 \lst@width=\dimen354
-\lst@newlines=\count366
-\lst@lineno=\count367
+\lst@newlines=\count362
+\lst@lineno=\count363
 \lst@maxwidth=\dimen355
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count368
-\lst@skipnumbers=\count369
+\c@lstnumber=\count364
+\lst@skipnumbers=\count365
 \lst@framebox=\box85
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -1488,7 +1209,11 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 LaTeX Warning: Unused global option(s):
     [pt].
 
-(./main.aux)
+(./main.aux
+
+LaTeX Warning: Label `fig:pseudo_rank' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
@@ -1511,16 +1236,16 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 92.
 LaTeX Font Info:    ... okay on input line 92.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count370
+\scratchcounter=\count366
 \scratchdimen=\dimen356
 \scratchbox=\box86
-\nofMPsegments=\count371
-\nofMParguments=\count372
+\nofMPsegments=\count367
+\nofMParguments=\count368
 \everyMPshowfont=\toks60
-\MPscratchCnt=\count373
+\MPscratchCnt=\count369
 \MPscratchDim=\dimen357
-\MPnumerator=\count374
-\makeMPintoPDFobject=\count375
+\MPnumerator=\count370
+\makeMPintoPDFobject=\count371
 \everyMPtoPDFconversion=\toks61
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1579,7 +1304,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count376
+\c@section@level=\count372
 )
 LaTeX Info: Redefining \ref on input line 92.
 LaTeX Info: Redefining \pageref on input line 92.
@@ -1623,7 +1348,7 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 92.
-\c@lstlisting=\count377
+\c@lstlisting=\count373
 LaTeX Info: Redefining \celsius on input line 92.
 Package gensymb Info: Faking symbols for \degree and \celsius on input line 92.
 
@@ -1636,12 +1361,8 @@ Package gensymb Info: Using \upOmega for \ohm on input line 92.
 
 Package gensymb Warning: Not defining \micro.
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
 03.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
@@ -1649,9 +1370,25 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+! Undefined control sequence.
+<recently read> \@Keywords 
+                           
+l.103 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+
+ []
+
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
  103.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
@@ -1696,7 +1433,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
  (./main.toc
-[2
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
 
 ])
 \tf@toc=\write6
@@ -1717,23 +1455,11 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 04.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3]
-Overfull \hbox (29.18912pt too wide) in paragraph at lines 174--180
-\OT1/ptm/m/n/10 (-20) en-force the PSD con-straint via a log-a-rith-mic bar-rie
-r $\OMS/ztmcm/m/n/10 ^^@\OML/ztmcm/m/it/10 ^^V [] []\OT1/ztmcm/m/n/10 (\OML/ztm
-cm/m/it/10 Y\OT1/ztmcm/m/n/10 )$\OT1/ptm/m/n/10 (-20) .
- []
-
-
-Overfull \hbox (40.91498pt too wide) in paragraph at lines 247--251
- [][] 
- []
-
-
+) [2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4]
-Overfull \hbox (16.82814pt too wide) in paragraph at lines 280--283
+ [3]
+Overfull \hbox (16.82814pt too wide) in paragraph at lines 284--287
 [][]\OT1/ptm/b/n/10 (-20) Theorem 4.1 \OT1/ptm/m/n/10 (-20) (Barvi-nok--Pataki)
 \OT1/ptm/b/n/10 (-20) . []\OT1/ptm/m/it/10 (-20) Let $\OMS/ztmcm/m/n/10 F \OT1/
 ztmcm/m/n/10 = \OMS/ztmcm/m/n/10 f\OML/ztmcm/m/it/10 Y \OMS/ztmcm/m/n/10 2 \U/m
@@ -1742,38 +1468,53 @@ sb/m/n/10 S[] \OT1/ztmcm/m/n/10 : [](\OML/ztmcm/m/it/10 A[]Y\OT1/ztmcm/m/n/10 )
  []
 
 
-Overfull \hbox (46.76112pt too wide) in paragraph at lines 317--320
- [][] 
- []
-
-
-Overfull \hbox (44.82924pt too wide) in paragraph at lines 331--334
+Overfull \hbox (44.82924pt too wide) in paragraph at lines 338--341
 \OT1/ptm/m/n/10 (-20) method with a con-tin-u-a-tion sched-ule $\OML/ztmcm/m/it
 /10 ^^U \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 10\OML/ztmcm/m/it/10 ; \OT1/ztmc
 m/m/n/10 100\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1000\OML/ztmcm/m/it/10 ; \OT
 1/ztmcm/m/n/10 10000\OMS/ztmcm/m/n/10 g$\OT1/ptm/m/n/10 (-20) . 
  []
 
-[5]
-Overfull \hbox (12.67834pt too wide) in paragraph at lines 348--350
+[4]
+Overfull \hbox (12.67834pt too wide) in paragraph at lines 357--359
 []\OT1/ptm/m/n/10 (-20) Increasing $\OML/ztmcm/m/it/10 p$ \OT1/ptm/m/n/10 (-20)
  be-yond $[]$ smooths
  []
 
+<images//phase_transition.png, id=392, 940.51375pt x 792.9625pt>
+File: images//phase_transition.png Graphic file (type png)
+<use images//phase_transition.png>
+Package pdftex.def Info: images//phase_transition.png  used on input line 365.
+(pdftex.def)             Requested size: 228.19107pt x 192.38391pt.
+<images//transformer_arch.png, id=394, 1702.36pt x 2537.48pt>
+File: images//transformer_arch.png Graphic file (type png)
+<use images//transformer_arch.png>
+Package pdftex.def Info: images//transformer_arch.png  used on input line 430.
+(pdftex.def)             Requested size: 228.19107pt x 340.10574pt.
 
-Overfull \hbox (0.50835pt too wide) in paragraph at lines 366--371
-[] []\OT1/phv/b/n/9 (-20) Setup.[] \OT1/ptm/m/n/10 (-20) We con-struct a ma-tri
-x com-ple-tion task. A ground-
- []
+Underfull \vbox (badness 6675) has occurred while \output is active []
 
-
+ [5 <./images//phase_transition.png (PNG copy)>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6]
-[7]
+ [6 <./images//transformer_arch.png>]
+<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=418, 1541.76pt x 756.8275
+pt>
+File: images//softmaxvsnonsoftmax_phasetransition.jpeg Graphic file (type jpg)
+<use images//softmaxvsnonsoftmax_phasetransition.jpeg>
+Package pdftex.def Info: images//softmaxvsnonsoftmax_phasetransition.jpeg  used
+ on input line 508.
+(pdftex.def)             Requested size: 228.19107pt x 112.00641pt.
+
+Overfull \hbox (5.12202pt too wide) in paragraph at lines 556--562
+\OT1/ptm/m/n/10 (-20) We swept the success-rate thresh-old $\OML/ztmcm/m/it/10 
+" \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 10[]\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/
+n/10 10[]\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 10[]\OMS/ztmcm/m/n/10 g$
+ []
+
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-30.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+66.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1781,67 +1522,111 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (8.79422pt too wide) in paragraph at lines 527--531
+Overfull \hbox (8.79422pt too wide) in paragraph at lines 563--567
 \OT1/ptm/m/n/10 (-20) monotone be-haviour with $\OML/ztmcm/m/it/10 p$\OT1/ptm/m
 /n/10 (-20) : ex-ces-sive over-parameterisation
  []
 
 
-Overfull \hbox (0.56718pt too wide) in paragraph at lines 527--531
+Overfull \hbox (0.56718pt too wide) in paragraph at lines 563--567
 \OT1/ptm/m/n/10 (-20) precision con-ver-gence. A \OT1/pcr/m/n/10 ReduceLROnPlat
 eau \OT1/ptm/m/n/10 (-20) sched-
  []
 
 
-Overfull \hbox (0.56581pt too wide) in paragraph at lines 548--551
+Overfull \hbox (52.93936pt too wide) in paragraph at lines 569--575
+\OT1/ptm/m/n/10 (-20) Sweeping the Soft-max tem-per-a-ture $\OML/ztmcm/m/it/10 
+^^\ \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 1\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 3\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 5\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 2\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 5\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
+10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 10\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n
+/10 0\OMS/ztmcm/m/n/10 g$
+ []
+
+<images//factor_exploration1.jpeg, id=419, 1606.0pt x 602.25pt>
+File: images//factor_exploration1.jpeg Graphic file (type jpg)
+<use images//factor_exploration1.jpeg>
+Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 5
+83.
+(pdftex.def)             Requested size: 228.19107pt x 85.5642pt.
+<images//factor_exploration2.jpeg, id=420, 1606.0pt x 576.1525pt>
+File: images//factor_exploration2.jpeg Graphic file (type jpg)
+<use images//factor_exploration2.jpeg>
+Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 5
+89.
+(pdftex.def)             Requested size: 228.19107pt x 81.85641pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
+Overfull \hbox (0.56581pt too wide) in paragraph at lines 602--605
 []\OT1/ptm/b/n/10 (-20) Asymmetry. \OT1/ptm/m/n/10 (-20) The logit ma-trix $\OM
 L/ztmcm/m/it/10 QK[]$ \OT1/ptm/m/n/10 (-20) is not con-strained
  []
 
 
-Overfull \hbox (7.79045pt too wide) detected at line 603
+Overfull \hbox (7.79045pt too wide) detected at line 659
 \OMS/ztmcm/m/n/10 L \OT1/ztmcm/m/n/10 = [] []  [] \OML/ztmcm/m/it/10 ;  X \OT1/
 ztmcm/m/n/10 = \OML/ztmcm/m/it/10 QK[]:
  []
 
-[8]
+[8 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
+<images//pseudo_rank.png, id=450, 518.6878pt x 421.575pt>
+File: images//pseudo_rank.png Graphic file (type png)
+<use images//pseudo_rank.png>
+Package pdftex.def Info: images//pseudo_rank.png  used on input line 733.
+(pdftex.def)             Requested size: 228.19107pt x 185.46783pt.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 676.
+put line 742.
 
-Overfull \hbox (7.18346pt too wide) in paragraph at lines 688--690
+Overfull \hbox (7.18346pt too wide) in paragraph at lines 754--756
 [] $\OMS/ztmcm/m/n/10 L   [][] []  []$ 
  []
 
+[9 <./images//pseudo_rank.png>]
+Overfull \hbox (18.37645pt too wide) in paragraph at lines 832--835
+\OT1/ptm/m/n/10 (-20) uni-form within-cluster at-ten-tion re-quire only a one-d
+imensional
+ []
 
-Underfull \vbox (badness 1210) has occurred while \output is active []
-
- [9]
 [10]
-Overfull \hbox (5.23065pt too wide) in paragraph at lines 854--857
+<images//gpt4-8layer.jpeg, id=479, 1003.75pt x 602.25pt>
+File: images//gpt4-8layer.jpeg Graphic file (type jpg)
+<use images//gpt4-8layer.jpeg>
+Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 909.
+(pdftex.def)             Requested size: 228.19107pt x 136.91559pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.23065pt too wide) in paragraph at lines 931--934
 []\OT1/ptm/m/n/10 (-20) Diagonal or near-
  []
 
 
-Overfull \hbox (4.16676pt too wide) in paragraph at lines 857--860
+Overfull \hbox (4.16676pt too wide) in paragraph at lines 934--937
 []\OT1/ptm/m/n/10 (-20) Block-diagonal at-
  []
 
 
-Overfull \hbox (13.0604pt too wide) in paragraph at lines 860--863
+Overfull \hbox (13.0604pt too wide) in paragraph at lines 937--940
 \OT1/ptm/m/n/10 (-20) re-trieval heads with dif-fuse, sequence-length-dependent
 
  []
 
-
-Overfull \hbox (4.82898pt too wide) in paragraph at lines 882--886
+[11 <./images//gpt4-8layer.jpeg>]
+Overfull \hbox (4.82898pt too wide) in paragraph at lines 959--963
 \OT1/ptm/m/n/10 (-20) compression---in con-trast to uni-form prun-ing, which bl
 indly
  []
 
-) (./nuclear.tex [11]
-Underfull \vbox (badness 2376) has occurred while \output is active []
+) (./nuclear.tex [12]
+Underfull \vbox (badness 1527) has occurred while \output is active []
 
- [12]
+
 Overfull \hbox (17.13824pt too wide) in paragraph at lines 46--48
 \OT1/ptm/m/n/10 (-20) where each $\OML/ztmcm/m/it/10 A[] \OMS/ztmcm/m/n/10 2 \U
 /msb/m/n/10 R[]$ \OT1/ptm/m/n/10 (-20) has en-tries drawn i.i.d. from $\OMS/ztm
@@ -1849,56 +1634,48 @@ cm/m/n/10 N\OT1/ztmcm/m/n/10 (0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1\OML/ztm
 cm/m/it/10 =N\OT1/ztmcm/m/n/10 )$\OT1/ptm/m/n/10 (-20) .
  []
 
-
-Underfull \vbox (badness 1137) has occurred while \output is active []
-
- [13]
-<pic1.jpeg, id=487, 467.7475pt x 383.4325pt>
-File: pic1.jpeg Graphic file (type jpg)
-<use pic1.jpeg>
-Package pdftex.def Info: pic1.jpeg  used on input line 106.
+[13]
+<images//pic1.jpeg, id=525, 467.7475pt x 383.4325pt>
+File: images//pic1.jpeg Graphic file (type jpg)
+<use images//pic1.jpeg>
+Package pdftex.def Info: images//pic1.jpeg  used on input line 106.
 (pdftex.def)             Requested size: 228.19107pt x 187.05861pt.
-<pic2.jpeg, id=489, 1606.0pt x 401.5pt>
-File: pic2.jpeg Graphic file (type jpg)
-<use pic2.jpeg>
-Package pdftex.def Info: pic2.jpeg  used on input line 115.
+ [14 <./images//pic1.jpeg>]
+<images//pic2.jpeg, id=538, 1606.0pt x 401.5pt>
+File: images//pic2.jpeg Graphic file (type jpg)
+<use images//pic2.jpeg>
+Package pdftex.def Info: images//pic2.jpeg  used on input line 115.
 (pdftex.def)             Requested size: 228.19107pt x 57.0428pt.
-<pic3.jpeg, id=492, 1204.5pt x 903.375pt>
-File: pic3.jpeg Graphic file (type jpg)
-<use pic3.jpeg>
-Package pdftex.def Info: pic3.jpeg  used on input line 126.
+<images//pic3.jpeg, id=541, 1204.5pt x 903.375pt>
+File: images//pic3.jpeg Graphic file (type jpg)
+<use images//pic3.jpeg>
+Package pdftex.def Info: images//pic3.jpeg  used on input line 126.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14 <./pic1.jpeg> <./pic2.jpeg>]) (./conclusion.tex [15 <./pic3.jpeg>]
+ [15 <./images//pic2.jpeg> <./images//pic3.jpeg>]) (./conclusion.tex
 Overfull \hbox (20.89035pt too wide) in paragraph at lines 69--72
 \OT1/ptm/m/n/10 (-20) and depth, fit-ted us-ing \OT1/pcr/m/n/10 scipy.optimize.
 curve[]fit
  []
 
-) (./bibliography.tex [16]) 
+[16]) (./bibliography.tex [17]) 
 AED: lastpage setting LastPage
-[17]
+[18
 
-Package caption Warning: Unused \captionsetup[sub] on input line 17.
-See the caption package documentation for explanation.
+] (./main.aux)
 
-(./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AFA56ED4CCF5706BE0CF7D159EA0B07F;12668.
  ) 
 Here is how much of TeX's memory you used:
- 45405 strings out of 480171
- 1026864 string characters out of 5894490
- 1774724 words of memory out of 5000000
- 62003 multiletter control sequences out of 15000+600000
- 536882 words of font info for 397 fonts, out of 8000000 for 9000
+ 45389 strings out of 480171
+ 1028094 string characters out of 5894490
+ 1790096 words of memory out of 5000000
+ 61965 multiletter control sequences out of 15000+600000
+ 536258 words of font info for 385 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 115i,16n,118p,1001b,2535s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,16n,118p,1001b,2645s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1913,10 +1690,10 @@ ive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 482014 bytes).
+Output written on main.pdf (18 pages, 3873475 bytes).
 PDF statistics:
- 646 PDF objects out of 1000 (max. 8388607)
- 535 compressed objects within 6 object streams
- 161 named destinations out of 1000 (max. 500000)
- 92100 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 698 PDF objects out of 1000 (max. 8388607)
+ 577 compressed objects within 6 object streams
+ 193 named destinations out of 1000 (max. 500000)
+ 92135 words of extra memory for PDF output out of 106986 (max. 10000000)
 
