@@ -117,29 +117,44 @@
 \section{Executive Summary}
 % ============================================================
 
-The central finding of this work is that the standard $d_{\text{head}} = 64$ used in
-Transformer attention is dramatically oversized for most attention heads. The key chain of
-reasoning is as follows.
+% The central finding of this work is that the standard $d_{\text{head}} = 64$ used in
+% Transformer attention is dramatically oversized for most attention heads. The key chain of
+% reasoning is as follows.
 
-Classical BM theory predicts that recovering an $n \times n$ matrix from $m$ linear
-equality constraints requires inner rank $p \geq \sqrt{2m}$ for optimization to be
-landscape-safe. For an $n \times n$ attention matrix with $m = n^2$ constraints, this gives
-$p \approx n\sqrt{2}$, well beyond the sequence length itself. Yet in practice, small
-$d_{\text{head}}$ values work empirically. This gap between theory and practice motivated
-our investigation.
+% Classical BM theory predicts that recovering an $n \times n$ matrix from $m$ linear
+% equality constraints requires inner rank $p \geq \sqrt{2m}$ for optimization to be
+% landscape-safe. For an $n \times n$ attention matrix with $m = n^2$ constraints, this gives
+% $p \approx n\sqrt{2}$, well beyond the sequence length itself. Yet in practice, small
+% $d_{\text{head}}$ values work empirically. This gap between theory and practice motivated
+% our investigation.
 
-The resolution comes in two steps. First, the Softmax operator is not a passive
-nonlinearity, it actively absorbs $n$ row-sum constraints via its Jacobian null space,
-reducing the effective constraint count from $m = n^2$ to $m_{\text{eff}} = n(n-1)$.
-Second, even this corrected count over-predicts $p^*$, because the problem has shifted from
-linear algebra (exact equalities) to computational geometry (margin inequalities). The true
-structural capacity of an attention head is governed by its \emph{Margin Rank}: the minimum
-embedding dimension needed to geometrically separate target tokens from distractor tokens.
+% The resolution comes in two steps. First, the Softmax operator is not a passive
+% nonlinearity, it actively absorbs $n$ row-sum constraints via its Jacobian null space,
+% reducing the effective constraint count from $m = n^2$ to $m_{\text{eff}} = n(n-1)$.
+% Second, even this corrected count over-predicts $p^*$, because the problem has shifted from
+% linear algebra (exact equalities) to computational geometry (margin inequalities). The true
+% structural capacity of an attention head is governed by its \emph{Margin Rank}: the minimum
+% embedding dimension needed to geometrically separate target tokens from distractor tokens.
 
-Empirically, GPT-2 heads exhibit Margin Ranks of 1--5 out of an allocated $d_{\text{head}}
-= 64$, an 80--97\% redundancy. This motivates the design of Heterogeneous Transformers
-with dynamically allocated, head-specific embedding dimensions.
+% Empirically, GPT-2 heads exhibit Margin Ranks of 1--5 out of an allocated $d_{\text{head}}
+% = 64$, an 80--97\% redundancy. This motivates the design of Heterogeneous Transformers
+% with dynamically allocated, head-specific embedding dimensions.
 
+
+\section*{Executive Summary}
+
+This project investigates the optimal dimensionality of transformation matrices (specifically $d_k$ and $d_v$) within Transformer architectures. The research evaluates theoretical optimization bounds, identifies their shortcomings in real-world application, and utilizes empirical observations and matrix sensing experiments to determine the true minimal required dimension ($p$) based on the target matrix.
+
+To establish a mathematical foundation, the research first explored the standard Burer-Monteiro (BM) factorization in the symmetric case and attempted to use the classical Pataki bound to find the empirical phase transition rank. However, applying the Pataki bound to the asymmetric, non-linear attention mechanism of Transformers resulted in critical errors. The project identified these Pataki-bound blunders, revealing that the mathematical bound was applied without any valid theoretical assumptions. This theoretical failure necessitated a pivot toward empirical methods and alternative matrix factorization theories to accurately understand the structural requirements of these networks.
+
+Aligning with the core mathematical flow of the project, the research was executed systematically through five key phases:
+\begin{enumerate}
+    \item \textbf{Verification of the Pataki Bound:} The project began by exploring standard BM factorization and initially verifying the classical Pataki bound under strictly symmetric conditions.
+    \item \textbf{Identifying Transformer Pataki-Bound Blunders:} The analysis exposed the flaws in applying the Pataki bound to find the transition rank in Transformers, proving the assumptions made were not feasible and the bound was strictly not applicable.
+    \item \textbf{Empirical Observations of $p$:} The methodology then shifted to direct empirical observations, comparing multiple parameters (such as precision and temperature) to understand the true behavior and dependencies of the dimension parameter $p$.
+    \item \textbf{Determining Optimal Transformation Dimensions ($d_k, d_v$):} Moving focus to the structure of the matrices and drawing inspiration from the BM factorization form ($QK^\top$), the project utilized Margin Rank Theory to determine the optimal dimensionality ($d$). This optimal $d_k$ was determined fundamentally on the basis of the target matrix.
+    \item \textbf{Matrix Sensing Experiments:} Finally, to explore implicit regularization, extensive experiments on matrix sensing were conducted, specifically analyzing the optimization effects of changing standard $L_2$ regularization to nuclear norm regularization.
+\end{enumerate}
 % ============================================================
 \section{Mathematical Preliminaries}
 \label{sec:prelim}
@@ -644,6 +659,7 @@ loose, it is inapplicable to this setting.
   and the feasible set is the probability simplex rather than a spectrahedron. The empirical
   collapse to $p^*=2$ (vs.\ the predicted bound of $\approx 6.32$) is direct evidence of
   this inapplicability.
+\end{remark}
 
 % \subsection{Why? The Softmax Jacobian Null Space}
 % \label{sec:softmax_null}
@@ -664,8 +680,8 @@ loose, it is inapplicable to this setting.
 
 % In the classical (linear) setting, satisfying $n^{2}$ equality constraints requires $rank(L)=n$. With Softmax, the effective constraint count is reduced to $m_{eff} = n^{2} - n = n(n-1)$. The corrected Barvinok-Pataki bound evaluates to $p^{*}(p^{*}+1)/2 \le n(n-1)$. For $n=20$ ($m_{eff}=380$), this bounds the inner rank at $p^{*} \le 27$. While this theoretical upper bound remains loose, the algebraic reduction mathematically opens the door for the massive dimensional collapse observed empirically.
 
-\subsection{Empirical Exploration: Comparing Parameters}
-\label{sec:param_comparison}
+% \subsection{Empirical Exploration: Comparing Parameters}
+% \label{sec:param_comparison}
 
 \subsection{Empirical Exploration: Comparing Parameters}
 
@@ -686,6 +702,12 @@ Whether the Softmax distribution is artificially sharpened ($\tau=0.1$) or heavi
   \begin{subfigure}[b]{\columnwidth}
     \centering
     \includegraphics[width=\linewidth]{factor_exploration1.jpeg}
+    \caption{Effect of precision.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{image.png}
     \caption{Effect of precision.}
   \end{subfigure}
   \hfill
@@ -888,7 +910,7 @@ low-dimensional configurations with large radii to compete fairly.
   effective active constraint count is $m_{\text{eff}} = m - n$.
 \end{lemma}
 \begin{proof}
-  By Lemma~6.1, the $n$ row-sum constraints contribute zero rank to the constraint
+  The $n$ row-sum constraints contribute zero rank to the constraint
   Jacobian in all reachable directions. The implicit function theorem then gives
   $m_{\text{eff}} = m - n$. Applying the Barvinok-Pataki dimension count to $m_{\text{eff}}$
   gives $p^*(p^*+1)/2 \leq m - n$. $\square$

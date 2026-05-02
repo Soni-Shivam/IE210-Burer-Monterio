@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1416,135 +1416,169 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
- [2]
-Underfull \vbox (badness 7064) has occurred while \output is active []
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
 
+Overfull \hbox (1.6514pt too wide) in paragraph at lines 150--152
+[]\OT1/ptm/m/n/10 (-20) Aligning with the core math-e-mat-i-cal flow of the pro
+ject,
+ []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
+[2] [3]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-39.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+54.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Overfull \hbox (12.67834pt too wide) in paragraph at lines 360--362
+Overfull \hbox (12.67834pt too wide) in paragraph at lines 375--377
 []\OT1/ptm/m/n/10 (-20) Increasing $\OML/ztmcm/m/it/10 p$ \OT1/ptm/m/n/10 (-20)
  be-yond $[]$ smooths
  []
 
-<images//phase_transition.png, id=374, 940.51375pt x 792.9625pt>
+<images//phase_transition.png, id=373, 940.51375pt x 792.9625pt>
 File: images//phase_transition.png Graphic file (type png)
 <use images//phase_transition.png>
-Package pdftex.def Info: images//phase_transition.png  used on input line 368.
+Package pdftex.def Info: images//phase_transition.png  used on input line 383.
 (pdftex.def)             Requested size: 228.19107pt x 192.38391pt.
 [4 <./images//phase_transition.png (PNG copy)>]
-Underfull \vbox (badness 5431) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<images//transformer_arch.png, id=385, 1702.36pt x 2537.48pt>
+<images//transformer_arch.png, id=384, 1702.36pt x 2537.48pt>
 File: images//transformer_arch.png Graphic file (type png)
 <use images//transformer_arch.png>
-Package pdftex.def Info: images//transformer_arch.png  used on input line 509.
+Package pdftex.def Info: images//transformer_arch.png  used on input line 524.
 (pdftex.def)             Requested size: 182.55354pt x 272.07684pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [5 <./images//transformer_arch.png>]
-<images//implicit_reg.png, id=397, 1405.25pt x 501.875pt>
+<images//implicit_reg.png, id=395, 1405.25pt x 501.875pt>
 File: images//implicit_reg.png Graphic file (type png)
 <use images//implicit_reg.png>
-Package pdftex.def Info: images//implicit_reg.png  used on input line 551.
+Package pdftex.def Info: images//implicit_reg.png  used on input line 566.
 (pdftex.def)             Requested size: 228.19107pt x 81.49628pt.
-<images//implicit_reg2.png, id=398, 1204.5pt x 501.875pt>
+<images//implicit_reg2.png, id=396, 1204.5pt x 501.875pt>
 File: images//implicit_reg2.png Graphic file (type png)
 <use images//implicit_reg2.png>
-Package pdftex.def Info: images//implicit_reg2.png  used on input line 558.
+Package pdftex.def Info: images//implicit_reg2.png  used on input line 573.
 (pdftex.def)             Requested size: 228.19107pt x 95.07388pt.
 
-Underfull \vbox (badness 4995) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6 <./images//implicit_reg.png> <./images//implicit_reg2.png>]
-<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=412, 1541.76pt x 756.8275
+<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=409, 1541.76pt x 756.8275
 pt>
 File: images//softmaxvsnonsoftmax_phasetransition.jpeg Graphic file (type jpg)
 <use images//softmaxvsnonsoftmax_phasetransition.jpeg>
 Package pdftex.def Info: images//softmaxvsnonsoftmax_phasetransition.jpeg  used
- on input line 628.
+ on input line 643.
 (pdftex.def)             Requested size: 228.19107pt x 112.00641pt.
- [7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
-<images//factor_exploration1.jpeg, id=424, 1606.0pt x 602.25pt>
+
+
+! LaTeX Error: \begin{document} ended by \end{remark}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.662 \end{remark}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.662 \end{remark}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+[7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
+<images//factor_exploration1.jpeg, id=422, 1606.0pt x 602.25pt>
 File: images//factor_exploration1.jpeg Graphic file (type jpg)
 <use images//factor_exploration1.jpeg>
-Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 6
-88.
+Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 7
+04.
 (pdftex.def)             Requested size: 228.19107pt x 85.5642pt.
-<images//factor_exploration2.jpeg, id=425, 1606.0pt x 576.1525pt>
+<images//image.png, id=423, 1606.0pt x 606.265pt>
+File: images//image.png Graphic file (type png)
+<use images//image.png>
+Package pdftex.def Info: images//image.png  used on input line 710.
+(pdftex.def)             Requested size: 228.19107pt x 86.13463pt.
+<images//factor_exploration2.jpeg, id=424, 1606.0pt x 576.1525pt>
 File: images//factor_exploration2.jpeg Graphic file (type jpg)
 <use images//factor_exploration2.jpeg>
-Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 6
-94.
+Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 7
+16.
 (pdftex.def)             Requested size: 228.19107pt x 81.85641pt.
 
-Overfull \hbox (0.56581pt too wide) in paragraph at lines 707--710
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (0.56581pt too wide) in paragraph at lines 729--732
 []\OT1/ptm/b/n/10 (-20) Asymmetry. \OT1/ptm/m/n/10 (-20) The logit ma-trix $\OM
 L/ztmcm/m/it/10 QK[]$ \OT1/ptm/m/n/10 (-20) is not con-strained
  []
 
-
-Overfull \hbox (7.79045pt too wide) detected at line 764
+[8 <./images//factor_exploration1.jpeg> <./images//image.png (PNG copy)> <./ima
+ges//factor_exploration2.jpeg>]
+Overfull \hbox (7.79045pt too wide) detected at line 786
 \OMS/ztmcm/m/n/10 L \OT1/ztmcm/m/n/10 = [] []  [] \OML/ztmcm/m/it/10 ;  X \OT1/
 ztmcm/m/n/10 = \OML/ztmcm/m/it/10 QK[]:
  []
 
-[8 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
+[9]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 847.
+put line 869.
 
-Overfull \hbox (7.18346pt too wide) in paragraph at lines 859--861
+Overfull \hbox (7.18346pt too wide) in paragraph at lines 881--883
 [] $\OMS/ztmcm/m/n/10 L   [][] []  []$ 
  []
 
-[9]
-Overfull \hbox (18.37645pt too wide) in paragraph at lines 937--940
+
+Overfull \hbox (18.37645pt too wide) in paragraph at lines 959--962
 \OT1/ptm/m/n/10 (-20) uni-form within-cluster at-ten-tion re-quire only a one-d
 imensional
  []
 
 [10]
-<images//gpt4-8layer.jpeg, id=469, 1003.75pt x 602.25pt>
+<images//gpt4-8layer.jpeg, id=466, 1003.75pt x 602.25pt>
 File: images//gpt4-8layer.jpeg Graphic file (type jpg)
 <use images//gpt4-8layer.jpeg>
-Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 1014.
+Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 1036.
 (pdftex.def)             Requested size: 228.19107pt x 136.91559pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (5.23065pt too wide) in paragraph at lines 1037--1040
+ [11 <./images//gpt4-8layer.jpeg>]
+Overfull \hbox (5.23065pt too wide) in paragraph at lines 1059--1062
 []\OT1/ptm/m/n/10 (-20) Diagonal or near-
  []
 
 
-Overfull \hbox (4.16676pt too wide) in paragraph at lines 1040--1043
+Overfull \hbox (4.16676pt too wide) in paragraph at lines 1062--1065
 []\OT1/ptm/m/n/10 (-20) Block-diagonal at-
  []
 
 
-Overfull \hbox (13.0604pt too wide) in paragraph at lines 1043--1046
+Overfull \hbox (13.0604pt too wide) in paragraph at lines 1065--1068
 \OT1/ptm/m/n/10 (-20) re-trieval heads with dif-fuse, sequence-length-dependent
 
  []
 
-[11 <./images//gpt4-8layer.jpeg>]
-Overfull \hbox (10.96886pt too wide) in paragraph at lines 1059--1061
+
+Overfull \hbox (10.96886pt too wide) in paragraph at lines 1081--1083
 \OT1/ptm/m/n/10 (-20) Margin Rank The-ory proves the re-dun-dancy of the Query/
 Key
  []
 
 ) (./nuclear.tex [12]
+
+LaTeX Warning: Citation `tu2016procrustes' on page 13 undefined on input line 4
+7.
+
+
 Overfull \hbox (17.13824pt too wide) in paragraph at lines 46--48
 \OT1/ptm/m/n/10 (-20) where each $\OML/ztmcm/m/it/10 A[] \OMS/ztmcm/m/n/10 2 \U
 /msb/m/n/10 R[]$ \OT1/ptm/m/n/10 (-20) has en-tries drawn i.i.d. from $\OMS/ztm
@@ -1553,23 +1587,24 @@ cm/m/it/10 =N\OT1/ztmcm/m/n/10 )$\OT1/ptm/m/n/10 (-20) .
  []
 
 [13]
-<images//iterconv.jpeg, id=515, 1204.5pt x 903.375pt>
+<images//iterconv.jpeg, id=512, 1204.5pt x 903.375pt>
 File: images//iterconv.jpeg Graphic file (type jpg)
 <use images//iterconv.jpeg>
 Package pdftex.def Info: images//iterconv.jpeg  used on input line 106.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
- [14 <./images//iterconv.jpeg>]
-<images//pic2.jpeg, id=528, 1606.0pt x 401.5pt>
+ [14]
+<images//pic2.jpeg, id=525, 1606.0pt x 401.5pt>
 File: images//pic2.jpeg Graphic file (type jpg)
 <use images//pic2.jpeg>
 Package pdftex.def Info: images//pic2.jpeg  used on input line 122.
 (pdftex.def)             Requested size: 228.19107pt x 57.0428pt.
-<images//pic3.jpeg, id=531, 1204.5pt x 903.375pt>
+<images//pic3.jpeg, id=528, 1204.5pt x 903.375pt>
 File: images//pic3.jpeg Graphic file (type jpg)
 <use images//pic3.jpeg>
 Package pdftex.def Info: images//pic3.jpeg  used on input line 133.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
-) (./conclusion.tex [15 <./images//pic2.jpeg> <./images//pic3.jpeg>]
+ [15 <./images//iterconv.jpeg> <./images//pic2.jpeg> <./images//pic3.jpeg>]) (.
+/conclusion.tex
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
 1.
 
@@ -1590,17 +1625,26 @@ curve[]fit
 AED: lastpage setting LastPage
 [17] (./main.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 16DDC17DA19A0713B3E9B399168AC8F8;12955.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 4D6A49226C571B475124169F6098D25D;12673
+(rerunfilecheck)             After:  00E9012997F568DAFC17E2A93C0DA7B3;12673.
  ) 
 Here is how much of TeX's memory you used:
- 45390 strings out of 480171
- 1028293 string characters out of 5894490
- 1780923 words of memory out of 5000000
- 61973 multiletter control sequences out of 15000+600000
- 535916 words of font info for 385 fonts, out of 8000000 for 9000
+ 45386 strings out of 480171
+ 1028218 string characters out of 5894490
+ 1784153 words of memory out of 5000000
+ 61971 multiletter control sequences out of 15000+600000
+ 535831 words of font info for 385 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  115i,16n,118p,1001b,2645s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -1617,10 +1661,10 @@ ive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 3977054 bytes).
+Output written on main.pdf (17 pages, 4356935 bytes).
 PDF statistics:
- 684 PDF objects out of 1000 (max. 8388607)
- 565 compressed objects within 6 object streams
- 187 named destinations out of 1000 (max. 500000)
- 92132 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 675 PDF objects out of 1000 (max. 8388607)
+ 556 compressed objects within 6 object streams
+ 184 named destinations out of 1000 (max. 500000)
+ 92129 words of extra memory for PDF output out of 106986 (max. 10000000)
 
