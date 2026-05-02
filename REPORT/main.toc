@@ -25,14 +25,16 @@
 \contentsline {subsection}{\numberline {5.4}Modelling Attention as an Asymmetric BM Problem}{7}{subsection.5.4}%
 \contentsline {subsubsection}{\numberline {5.4.1}Classical Matrix Completion Prediction}{7}{subsubsection.5.4.1}%
 \contentsline {subsubsection}{\numberline {5.4.2}Connection to Implicit Regularization}{7}{subsubsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.5}The Geometric Warp Drive: Ablation Experiment}{8}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.5}Linear vs. Softmax Factorization}{7}{subsection.5.5}%
 \contentsline {subsubsection}{\numberline {5.5.1}Hypothesis}{8}{subsubsection.5.5.1}%
 \contentsline {subsubsection}{\numberline {5.5.2}Results}{8}{subsubsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.6}Why? The Softmax Jacobian Null Space}{8}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Empirical Exploration: Comparing Parameters}{8}{subsection.5.7}%
-\contentsline {subsubsection}{\numberline {5.7.1}Effect of Precision}{8}{subsubsection.5.7.1}%
-\contentsline {subsubsection}{\numberline {5.7.2}Effect of Temperature}{9}{subsubsection.5.7.2}%
-\contentsline {subsection}{\numberline {5.8}The Pataki Bound Fails: Moving Focus to Structure}{9}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.6}Mathematical Misapplication of the Pataki Bound}{8}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Why? The Softmax Jacobian Null Space}{8}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Empirical Exploration: Comparing Parameters}{8}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Empirical Exploration: Comparing Parameters}{8}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}Effect of Precision}{8}{subsubsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.2}Effect of Temperature}{9}{subsubsection.5.9.2}%
+\contentsline {subsection}{\numberline {5.10}The Pataki Bound Fails: Moving Focus to Structure}{9}{subsection.5.10}%
 \contentsline {section}{\numberline {6}Phase III: Margin Rank Theory}{9}{section.6}%
 \contentsline {subsection}{\numberline {6.1}From Equalities to Margin Inequalities}{9}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Setup: Applying Margin Rank Theory}{9}{subsection.6.2}%
@@ -79,11 +81,11 @@
 \contentsline {subsubsection}{\numberline {10.6.1}Rank Recovery and Penalty Equivalence}{15}{subsubsection.10.6.1}%
 \contentsline {subsubsection}{\numberline {10.6.2}Iteration Cost: A Practical Asymmetry}{16}{subsubsection.10.6.2}%
 \contentsline {subsubsection}{\numberline {10.6.3}Why the Iteration Cost Diverges}{16}{subsubsection.10.6.3}%
-\contentsline {subsection}{\numberline {10.7}Conclusion}{17}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.7}Conclusion}{16}{subsection.10.7}%
 \contentsline {section}{\numberline {11}Discussion}{17}{section.11}%
 \contentsline {subsection}{\numberline {11.1}Summary of the Research Journey}{17}{subsection.11.1}%
 \contentsline {subsection}{\numberline {11.2}Limitations and Caveats}{17}{subsection.11.2}%
 \contentsline {section}{\numberline {12}Future Work}{17}{section.12}%
-\contentsline {section}{\numberline {13}Conclusion}{18}{section.13}%
+\contentsline {section}{\numberline {13}Conclusion}{17}{section.13}%
 \contentsline {section}{References}{18}{Item.19}%
 \contentsfinish 

@@ -103,10 +103,17 @@ Figure \ref{fig:pseudo_rank} plots the pseudo-rank against the true rank $r^*$ f
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\columnwidth]{pic1.jpeg}
-  \caption{Both penalties recover rank exactly equal to $r^*$ across all tested values, with the search-space ceiling $k = 2r^*$ shown as reference.}
+  \includegraphics[width=\columnwidth]{iterconv.jpeg}
+  \caption{The plot compares the optimization efficiency of $L_2$-regularized Burer-Monteiro factorization against explicit nuclear norm (NUC) regularization.}
   \label{fig:pseudo_rank}
 \end{figure}
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\columnwidth]{pseudo_rank.png}
+%   \caption{The Norm vs. Dimension paradox: Margin-based models favour dimensions over norm.}
+%   \label{fig:norm_vs_dim}
+% \end{figure}
 
 The singular value spectra (Figure \ref{fig:svd_spectrum}) make the equivalence visually unambiguous. In every panel, the recovered matrix exhibits a sharp cliff at index $r^*$, with kept singular values of magnitude $\mathcal{O}(0.1)$ to $\mathcal{O}(1)$ and pruned singular values sitting at the optimizer's noise floor of approximately $10^{-7}$. The drop spans six to seven orders of magnitude, leaving no ambiguity about the recovered rank. The $L_2$ and nuclear norm spectra coincide throughout, kept singular values, noise floor, and the slope of the spectrum within the kept block are all visually indistinguishable. The two penalties do not merely produce the same rank; they produce essentially the same matrix $W$.
 

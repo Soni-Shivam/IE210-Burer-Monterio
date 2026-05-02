@@ -596,7 +596,7 @@ This embedding is what allows us to import the symmetric BM convergence guarante
 starting framework, while also clarifying exactly \emph{where} they break down when Softmax
 is introduced.
 
-\subsection{The Geometric Warp Drive: Ablation Experiment}
+\subsection{Linear vs. Softmax Factorization}
 \label{sec:warp_drive}
 
 To isolate the Softmax effect, we optimize an Identity matrix target ($M = I_{20}$) under
@@ -619,14 +619,14 @@ manifest as a smaller $p^*$.
         at $p = 20$. Classical linear algebra prevails: recovering $I_{20}$ requires full
         rank.
   \item[Softmax factorization.] Success rate is 100\% at $p^* = 2$, remaining high for all
-        larger $p$. We call this the \textbf{Geometric Warp Drive}: the Softmax operator
+        larger $p$. The Softmax operator
         collapses the dimensional requirement by an order of magnitude.
 \end{description}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{softmaxvsnonsoftmax_phasetransition.jpeg}
-  \caption{The Geometric Warp Drive: Softmax factorization induces massive structural compression.}
+  \caption{Softmax factorization induces massive structural compression.}
   \label{fig:warp_drive}
 \end{figure}
 
@@ -634,7 +634,7 @@ At low precision thresholds ($\varepsilon = 10^{-5}$), success often occurs even
 confirming that the Pataki bound ($p \approx 6.32$ for $n=20$, $m=20$) is not merely
 loose, it is inapplicable to this setting.
 
-\begin{remark}[Mathematical Misapplication of the Pataki Bound]
+\subsection{Mathematical Misapplication of the Pataki Bound}
   Applying the Barvinok-Pataki bound to predict the minimum head dimension $d_{\text{head}}$
   of a Softmax attention block is a \emph{category error}. The theorem requires (i) a
   \emph{symmetric} matrix variable, (ii) bounded by \emph{pure affine equality} constraints
@@ -663,38 +663,24 @@ Softmax output: the operator natively \emph{absorbs} all $n$ row-sum constraints
 degrees of freedom are freed from constraint satisfaction and can instead be used for spatial
 embedding of the token manifold.
 
-In the classical (linear) setting, satisfying $n^2$ equality constraints requires
-$\rank(L) = n$. With Softmax, the effective constraint count is reduced to
-$m_{\text{eff}} = n^2 - n = n(n-1)$, and the corrected Barvinok-Pataki bound gives
-$p^*(p^*+1)/2 \leq n(n-1)$, which for $n=20$ gives $p^* \lesssim 20$, still loose, but
-already drastically tighter than the linear bound.
+In the classical (linear) setting, satisfying $n^{2}$ equality constraints requires $rank(L)=n$. With Softmax, the effective constraint count is reduced to $m_{eff} = n^{2} - n = n(n-1)$. The corrected Barvinok-Pataki bound evaluates to $p^{*}(p^{*}+1)/2 \le n(n-1)$. For $n=20$ ($m_{eff}=380$), this bounds the inner rank at $p^{*} \le 27$. While this theoretical upper bound remains loose, the algebraic reduction mathematically opens the door for the massive dimensional collapse observed empirically.
 
 \subsection{Empirical Exploration: Comparing Parameters}
 \label{sec:param_comparison}
 
-\subsubsection{Effect of Precision}
-We swept the success-rate threshold using values $\varepsilon = 10^{-3}$, $10^{-5}$, and $10^{-8}$
-across ranks $p \in \{1,\ldots,20\}$ for multiple target
-structures. The minimum feasible rank $p^*(\varepsilon)$ increases with precision: achieving
-$\varepsilon = 10^{-8}$ for the Identity matrix requires $p^* = 3$ (a 3D spherical
-arrangement) rather than $p^* = 2$, because higher precision demands greater angular
-separation between the $n$ points.
+\subsection{Empirical Exploration: Comparing Parameters}
 
-At $\varepsilon = 10^{-8}$, the Softmax landscape becomes significantly more challenging.
-The success rate exhibits non-monotone behaviour with $p$: excessive over-parameterisation
-($p \gg r$) introduces optimization noise that hinders high-precision convergence. A
-\texttt{ReduceLROnPlateau} scheduler was required to ``zoom in'' on the narrow global minimum.
+\subsubsection{Effect of Precision}
+We swept the success-rate tolerance threshold from $\epsilon=10^{-3}$ down to $\epsilon=10^{-8}$ across ranks $p \in \{1, \dots, 20\}$ for the Identity matrix target. The data reveals that the minimum feasible rank $p^*(\epsilon)$ is strictly bounded but shifts slightly with extreme precision thresholds. 
+Specifically, achieving $\epsilon=10^{-5}$ requires $p^* = 2$. However, crossing the threshold to extreme precision ($\epsilon=10^{-8}$) strictly requires $p^* = 3$. This occurs because satisfying ultra-tight numerical tolerances requires a 3D spherical arrangement to maximize angular separation, whereas 2D circle embedding causes marginal floating-point crowding. 
+Crucially, once this minimum threshold ($p^*=3$) is met, the success rate remains robust at 100\% for all over-parameterized ranks up to $p=20$. The optimization landscape does not degrade or exhibit non-monotone behavior at higher dimensions; convergence is completely stable once the geometric capacity is satisfied.
 
 \subsubsection{Effect of Temperature}
-Sweeping the Softmax temperature across values $\tau = 0.1, 0.3, 0.5, 1.0, 2.0, 5.0,$ and $10.0$
-at fixed precision $\varepsilon = 10^{-5}$, the
-minimum rank $p^*(\tau)$ varies across the temperature range. Lower temperatures (sharper
-Softmax) amplify the separation between target and distractor logits, reducing the margin
-requirement and allowing lower-dimensional embeddings to succeed. Higher temperatures
-(diffuse Softmax) require greater spatial separation, increasing $p^*$.
+To evaluate whether the geometric collapse is merely an artifact of Softmax scaling, we swept the Softmax temperature across values $\tau \in \{0.1, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0\}$ alongside the standard Transformer scaling ($\tau = \sqrt{p}$). 
 
-These results confirm that $p^*$ is not a fixed constant but a function
-$p^*(\varepsilon, \text{eff}_r, \tau)$ of precision, target structure, and temperature.
+The empirical results were definitive: the minimum required rank $p^*$ is perfectly invariant to the Softmax temperature. Across every temperature evaluated, the factorization completely failed at $p=1$ (0\% success) and achieved uniform global convergence at exactly $p=2$ (100\% success). 
+
+Whether the Softmax distribution is artificially sharpened ($\tau=0.1$) or heavily diffused ($\tau=10.0$), the underlying geometric requirement of the Attention head does not change. This provides strong empirical evidence that Margin Rank is a fundamental topological property of the target routing graph, entirely decoupled from scalar temperature modifications.
 
 \begin{figure}[H]
   \centering
@@ -848,12 +834,12 @@ To correctly compute the true Margin Rank, we must abandon implicit
 regularization entirely and enforce an \emph{explicit Hard Bottleneck}: restrict $p$ to a
 fixed integer and test whether the spatial geometry can satisfy the margin constraints.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\columnwidth]{pseudo_rank.png}
-  \caption{The Norm vs. Dimension paradox: Margin-based models favour dimensions over norm.}
-  \label{fig:norm_vs_dim}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\columnwidth]{pseudo_rank.png}
+%   \caption{The Norm vs. Dimension paradox: Margin-based models favour dimensions over norm.}
+%   \label{fig:norm_vs_dim}
+% \end{figure}
 
 \subsection{The Hard Bottleneck Predictor Algorithm}
 \label{sec:hard_bottleneck}
@@ -1038,6 +1024,7 @@ bottleneck of this layer. The hard attention graph it implements, routing querie
 to resolve all margin inequalities without geometric collision. Even so, this is a
 \textbf{79\% compression} relative to the 24-dimensional classical baseline.
 
+
 % ============================================================
 \section{Implications for Transformer Architecture}
 \label{sec:implications}
@@ -1070,16 +1057,8 @@ remains drastically below the linear rank bound $n$.
 \subsection{Practical Applications}
 
 \subsubsection{Lossless Surgical Pruning (SVD Compression)}
-For existing pre-trained models (LLaMA, Mistral, GPT-2), Margin Rank provides a
-\emph{deterministic, surgical pruning map}: compute $p^*$ for every head, then apply SVD
-to compress the $Q$ and $K$ weight matrices:
-\[
-  W_Q \approx U_Q^{(p^*)} \Sigma_Q^{(p^*)} (V_Q^{(p^*)})^\top, \quad
-  W_K \approx U_K^{(p^*)} \Sigma_K^{(p^*)} (V_K^{(p^*)})^\top.
-\]
-This mathematically guarantees preservation of the operational Softmax geometry while
-maximising hardware compression, in contrast to uniform pruning, which blindly discards
-capacity regardless of geometric necessity.
+Margin Rank Theory proves the redundancy of the Query/Key routing subspace, allowing for targeted pruning without disrupting the Value ($W_V$) feature extraction. For existing pre-trained models, compute $p^{*}$ for every head, then apply SVD to compress strictly the routing matrices:
+$W_{Q}\approx U_{Q}^{(p^{*})}\Sigma_{Q}^{(p^{*})}(V_{Q}^{(p^{*})})^{\top}$ , $W_{K}\approx U_{K}^{(p^{*})}\Sigma_{K}^{(p^{*})}(V_{K}^{(p^{*})})^{\top}$.
 
 \subsubsection{Proxy-Driven Architectural Search}
 Geometric motifs in human language (syntax, induction, attention sinks) are scale-invariant.
