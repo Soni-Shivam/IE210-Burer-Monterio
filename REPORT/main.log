@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1209,11 +1209,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 LaTeX Warning: Unused global option(s):
     [pt].
 
-(./main.aux
-
-LaTeX Warning: Label `eq:attention' multiply defined.
-
-)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
@@ -1370,36 +1366,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-! Undefined control sequence.
-<recently read> \@Abstract 
-                           
-l.103 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \@Keywords 
-                           
-l.103 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--103
-
- []
-
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 103.
+ 108.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
@@ -1408,19 +1377,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 103.
+ 108.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 103.
+ 108.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 103.
+ 108.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
@@ -1431,27 +1400,31 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 103.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 103.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 103.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
- (./main.toc
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
-])
+ (./main.toc)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- (./overall.tex [2]
+
+(./overall.tex [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
+ [2]
+Underfull \vbox (badness 7064) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
@@ -1466,130 +1439,107 @@ Overfull \hbox (12.67834pt too wide) in paragraph at lines 360--362
  be-yond $[]$ smooths
  []
 
-<images//phase_transition.png, id=402, 940.51375pt x 792.9625pt>
+<images//phase_transition.png, id=374, 940.51375pt x 792.9625pt>
 File: images//phase_transition.png Graphic file (type png)
 <use images//phase_transition.png>
 Package pdftex.def Info: images//phase_transition.png  used on input line 368.
 (pdftex.def)             Requested size: 228.19107pt x 192.38391pt.
 [4 <./images//phase_transition.png (PNG copy)>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5431) has occurred while \output is active []
 
-<images//transformer_arch.png, id=414, 1702.36pt x 2537.48pt>
+<images//transformer_arch.png, id=385, 1702.36pt x 2537.48pt>
 File: images//transformer_arch.png Graphic file (type png)
 <use images//transformer_arch.png>
 Package pdftex.def Info: images//transformer_arch.png  used on input line 509.
 (pdftex.def)             Requested size: 182.55354pt x 272.07684pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [5 <./images//transformer_arch.png>]
-<images//implicit_reg.png, id=425, 1405.25pt x 501.875pt>
+<images//implicit_reg.png, id=397, 1405.25pt x 501.875pt>
 File: images//implicit_reg.png Graphic file (type png)
 <use images//implicit_reg.png>
 Package pdftex.def Info: images//implicit_reg.png  used on input line 551.
 (pdftex.def)             Requested size: 228.19107pt x 81.49628pt.
-<images//implicit_reg2.png, id=426, 1204.5pt x 501.875pt>
+<images//implicit_reg2.png, id=398, 1204.5pt x 501.875pt>
 File: images//implicit_reg2.png Graphic file (type png)
 <use images//implicit_reg2.png>
 Package pdftex.def Info: images//implicit_reg2.png  used on input line 558.
 (pdftex.def)             Requested size: 228.19107pt x 95.07388pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4995) has occurred while \output is active []
 
  [6 <./images//implicit_reg.png> <./images//implicit_reg2.png>]
-<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=441, 1541.76pt x 756.8275
+<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=412, 1541.76pt x 756.8275
 pt>
 File: images//softmaxvsnonsoftmax_phasetransition.jpeg Graphic file (type jpg)
 <use images//softmaxvsnonsoftmax_phasetransition.jpeg>
 Package pdftex.def Info: images//softmaxvsnonsoftmax_phasetransition.jpeg  used
  on input line 628.
 (pdftex.def)             Requested size: 228.19107pt x 112.00641pt.
-
-
-! LaTeX Error: \begin{document} ended by \end{remark}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.647 \end{remark}
-                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.647 \end{remark}
-                  
-Things are pretty mixed up, but I think the worst is over.
-
-[7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
-<images//factor_exploration1.jpeg, id=459, 1606.0pt x 602.25pt>
+ [7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
+<images//factor_exploration1.jpeg, id=424, 1606.0pt x 602.25pt>
 File: images//factor_exploration1.jpeg Graphic file (type jpg)
 <use images//factor_exploration1.jpeg>
 Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 6
-89.
+88.
 (pdftex.def)             Requested size: 228.19107pt x 85.5642pt.
-<images//factor_exploration2.jpeg, id=460, 1606.0pt x 576.1525pt>
+<images//factor_exploration2.jpeg, id=425, 1606.0pt x 576.1525pt>
 File: images//factor_exploration2.jpeg Graphic file (type jpg)
 <use images//factor_exploration2.jpeg>
 Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 6
-95.
+94.
 (pdftex.def)             Requested size: 228.19107pt x 81.85641pt.
 
-Overfull \hbox (0.56581pt too wide) in paragraph at lines 708--711
+Overfull \hbox (0.56581pt too wide) in paragraph at lines 707--710
 []\OT1/ptm/b/n/10 (-20) Asymmetry. \OT1/ptm/m/n/10 (-20) The logit ma-trix $\OM
 L/ztmcm/m/it/10 QK[]$ \OT1/ptm/m/n/10 (-20) is not con-strained
  []
 
-[8 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
-Overfull \hbox (7.79045pt too wide) detected at line 765
+
+Overfull \hbox (7.79045pt too wide) detected at line 764
 \OMS/ztmcm/m/n/10 L \OT1/ztmcm/m/n/10 = [] []  [] \OML/ztmcm/m/it/10 ;  X \OT1/
 ztmcm/m/n/10 = \OML/ztmcm/m/it/10 QK[]:
  []
 
+[8 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 848.
+put line 847.
 
-Overfull \hbox (7.18346pt too wide) in paragraph at lines 860--862
+Overfull \hbox (7.18346pt too wide) in paragraph at lines 859--861
 [] $\OMS/ztmcm/m/n/10 L   [][] []  []$ 
  []
 
-
-Underfull \vbox (badness 5681) has occurred while \output is active []
-
- [9]
-Overfull \hbox (18.37645pt too wide) in paragraph at lines 938--941
+[9]
+Overfull \hbox (18.37645pt too wide) in paragraph at lines 937--940
 \OT1/ptm/m/n/10 (-20) uni-form within-cluster at-ten-tion re-quire only a one-d
 imensional
  []
 
 [10]
-<images//gpt4-8layer.jpeg, id=504, 1003.75pt x 602.25pt>
+<images//gpt4-8layer.jpeg, id=469, 1003.75pt x 602.25pt>
 File: images//gpt4-8layer.jpeg Graphic file (type jpg)
 <use images//gpt4-8layer.jpeg>
-Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 1015.
+Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 1014.
 (pdftex.def)             Requested size: 228.19107pt x 136.91559pt.
 
-Overfull \hbox (5.23065pt too wide) in paragraph at lines 1038--1041
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.23065pt too wide) in paragraph at lines 1037--1040
 []\OT1/ptm/m/n/10 (-20) Diagonal or near-
  []
 
 
-Overfull \hbox (4.16676pt too wide) in paragraph at lines 1041--1044
+Overfull \hbox (4.16676pt too wide) in paragraph at lines 1040--1043
 []\OT1/ptm/m/n/10 (-20) Block-diagonal at-
  []
 
 
-Overfull \hbox (13.0604pt too wide) in paragraph at lines 1044--1047
+Overfull \hbox (13.0604pt too wide) in paragraph at lines 1043--1046
 \OT1/ptm/m/n/10 (-20) re-trieval heads with dif-fuse, sequence-length-dependent
 
  []
 
 [11 <./images//gpt4-8layer.jpeg>]
-Overfull \hbox (10.96886pt too wide) in paragraph at lines 1060--1062
+Overfull \hbox (10.96886pt too wide) in paragraph at lines 1059--1061
 \OT1/ptm/m/n/10 (-20) Margin Rank The-ory proves the re-dun-dancy of the Query/
 Key
  []
@@ -1603,29 +1553,27 @@ cm/m/it/10 =N\OT1/ztmcm/m/n/10 )$\OT1/ptm/m/n/10 (-20) .
  []
 
 [13]
-Underfull \vbox (badness 1270) has occurred while \output is active []
-
-<images//iterconv.jpeg, id=556, 1204.5pt x 903.375pt>
+<images//iterconv.jpeg, id=515, 1204.5pt x 903.375pt>
 File: images//iterconv.jpeg Graphic file (type jpg)
 <use images//iterconv.jpeg>
 Package pdftex.def Info: images//iterconv.jpeg  used on input line 106.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
  [14 <./images//iterconv.jpeg>]
-<images//pic2.jpeg, id=571, 1606.0pt x 401.5pt>
+<images//pic2.jpeg, id=528, 1606.0pt x 401.5pt>
 File: images//pic2.jpeg Graphic file (type jpg)
 <use images//pic2.jpeg>
 Package pdftex.def Info: images//pic2.jpeg  used on input line 122.
 (pdftex.def)             Requested size: 228.19107pt x 57.0428pt.
-<images//pic3.jpeg, id=574, 1204.5pt x 903.375pt>
+<images//pic3.jpeg, id=531, 1204.5pt x 903.375pt>
 File: images//pic3.jpeg Graphic file (type jpg)
 <use images//pic3.jpeg>
 Package pdftex.def Info: images//pic3.jpeg  used on input line 133.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
- [15 <./images//pic2.jpeg> <./images//pic3.jpeg>])
-(./conclusion.tex
+) (./conclusion.tex [15 <./images//pic2.jpeg> <./images//pic3.jpeg>]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
 1.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1642,121 +1590,37 @@ curve[]fit
 AED: lastpage setting LastPage
 [17] (./main.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: D02CB435211775D79519773E8FD86186;13607
-(rerunfilecheck)             After:  16DDC17DA19A0713B3E9B399168AC8F8;12955.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 16DDC17DA19A0713B3E9B399168AC8F8;12955.
  ) 
 Here is how much of TeX's memory you used:
- 45427 strings out of 480171
- 1028801 string characters out of 5894490
- 1782569 words of memory out of 5000000
- 61980 multiletter control sequences out of 15000+600000
- 536103 words of font info for 387 fonts, out of 8000000 for 9000
+ 45390 strings out of 480171
+ 1028293 string characters out of 5894490
+ 1780923 words of memory out of 5000000
+ 61973 multiletter control sequences out of 15000+600000
+ 535916 words of font info for 385 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  115i,16n,118p,1001b,2645s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{theorem.6.5} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.10.29} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.10.28} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.6.18} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.3.6} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.4.9} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.3.3} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Item.19} has been referenced but does not exist, re
-placed by a fixed one
-
-pdfTeX warning (dest): name{section.13} has been referenced but does not exist,
- replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.11.2} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.11.1} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.10.7} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.10.6} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.10.5} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.10.4} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.10.3} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.7} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.6} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.5} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.4} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.3} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.10} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.9} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.8} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 3978916 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucr
+r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (17 pages, 3977054 bytes).
 PDF statistics:
- 735 PDF objects out of 1000 (max. 8388607)
- 611 compressed objects within 7 object streams
- 213 named destinations out of 1000 (max. 500000)
- 92164 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 684 PDF objects out of 1000 (max. 8388607)
+ 565 compressed objects within 6 object streams
+ 187 named destinations out of 1000 (max. 500000)
+ 92132 words of extra memory for PDF output out of 106986 (max. 10000000)
 

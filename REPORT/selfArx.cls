@@ -283,25 +283,25 @@
 		\vskip10pt%
 		{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont \@Authors\par}%
 		\vskip18pt%
-		\fcolorbox{color1}{white}{%
-			\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
-				\colorbox{color2!10}{%
-					\parbox{\textwidth-4\fboxsep-2\fboxrule}{%
-						\ifx\@Keywords\@empty%
-							\sffamily\textbf{\abstractname}\\\@Abstract%
-						\else%
-							\sffamily\textbf{\abstractname}\\\@Abstract\\[-20pt]%
-							\textbf{\keywordname}\\\@Keywords%
-						\fi%
-					}%
-				}%
-				\vskip0pt%
-				\begingroup%
-					\raggedright\sffamily\small%
-					\footnotesize\@affiliation\par%
-				\endgroup%%
-			}%
-		}%
+% 		\fcolorbox{color1}{white}{%
+% 			\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
+% 				\colorbox{color2!10}{%
+% 					\parbox{\textwidth-4\fboxsep-2\fboxrule}{%
+% 						\ifx\@Keywords\@empty%
+% 							\sffamily\textbf{\abstractname}\\\@Abstract%
+% 						\else%
+% 							\sffamily\textbf{\abstractname}\\\@Abstract\\[-20pt]%
+% 							\textbf{\keywordname}\\\@Keywords%
+% 						\fi%
+% 					}%
+% 				}%
+% 				\vskip0pt%
+% 				\begingroup%
+% 					\raggedright\sffamily\small%
+% 					\footnotesize\@affiliation\par%
+% 				\endgroup%%
+% 			}%
+% 		}%
 		\vskip25pt%
 	}]%
 }

@@ -27,7 +27,7 @@
 \newlabel{eq:primal_sdp}{{2}{2}{Positive Semidefinite Matrices and Semidefinite Programs}{equation.2.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}The IPM Bottleneck}{2}{subsubsection.2.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Matrix Rank, Nuclear Norm, and Convex Relaxation}{2}{subsection.2.2}\protected@file@percent }
-\newlabel{eq:nuclear_identity}{{5}{3}{Matrix Rank, Nuclear Norm, and Convex Relaxation}{equation.2.5}{}}
+\newlabel{eq:nuclear_identity}{{5}{2}{Matrix Rank, Nuclear Norm, and Convex Relaxation}{equation.2.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Non-Convex Topology: Quotient Manifolds and Strict Saddles}{3}{subsection.2.3}\protected@file@percent }
 \newlabel{sec:nonconvex_topology}{{2.3}{3}{Non-Convex Topology: Quotient Manifolds and Strict Saddles}{subsection.2.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A strict saddle on the BM quotient manifold. The surface $f(x,y)=x^2-y^2$ has zero gradient at the origin, yet a strictly negative Hessian eigenvalue in the $y$-direction creates a valley of descent. Stochastic noise projects onto this escape direction, guaranteeing that gradient descent exits the saddle.\relax }}{3}{figure.caption.1}\protected@file@percent }
@@ -38,7 +38,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}What Is the Burer-Monteiro Factorization?}{3}{subsection.3.1}\protected@file@percent }
 \newlabel{eq:bm}{{8}{3}{What Is the Burer-Monteiro Factorization?}{equation.3.8}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}When does it work?}{3}{subsubsection.3.1.1}\protected@file@percent }
-\newlabel{eq:pataki_bound}{{9}{4}{Barvinok-Pataki}{equation.3.9}{}}
+\newlabel{eq:pataki_bound}{{9}{3}{Barvinok-Pataki}{equation.3.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The Barvinok-Pataki phase transition. As the inner rank $p$ crosses $p^* \approx \sqrt  {2m}$, the probability of encountering spurious local minima collapses to zero.\relax }}{4}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:pataki_threshold}{{2}{4}{The Barvinok-Pataki phase transition. As the inner rank $p$ crosses $p^* \approx \sqrt {2m}$, the probability of encountering spurious local minima collapses to zero.\relax }{figure.caption.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Empirical Verification of the Phase Transition}{4}{subsection.3.2}\protected@file@percent }
@@ -48,25 +48,25 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Empirical Verification of the Phase Transition.\relax }}{4}{figure.caption.3}\protected@file@percent }
 \newlabel{fig:phase_transition}{{3}{4}{Empirical Verification of the Phase Transition.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Thinking About BM in Machine Learning: Implicit Regularization}{4}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Phase II: Applying BM to Transformer Attention}{5}{section.4}\protected@file@percent }
-\newlabel{sec:attention_bm}{{4}{5}{Phase II: Applying BM to Transformer Attention}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Context: The Transformer and Self-Attention}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Phase II: Applying BM to Transformer Attention}{4}{section.4}\protected@file@percent }
+\newlabel{sec:attention_bm}{{4}{4}{Phase II: Applying BM to Transformer Attention}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Context: The Transformer and Self-Attention}{4}{subsection.4.1}\protected@file@percent }
 \newlabel{eq:qkv}{{10}{5}{Context: The Transformer and Self-Attention}{equation.4.10}{}}
 \newlabel{eq:attention}{{11}{5}{Context: The Transformer and Self-Attention}{equation.4.11}{}}
 \newlabel{eq:logit}{{12}{5}{Context: The Transformer and Self-Attention}{equation.4.12}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The Transformer architecture and self-attention mechanism.\relax }}{5}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:transformer_arch}{{4}{5}{The Transformer architecture and self-attention mechanism.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Need for Asymmetric BM Factorization}{6}{subsection.4.2}\protected@file@percent }
-\newlabel{eq:block_adapter}{{13}{6}{The Need for Asymmetric BM Factorization}{equation.4.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Need for Asymmetric BM Factorization}{5}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:block_adapter}{{13}{5}{The Need for Asymmetric BM Factorization}{equation.4.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Empirical Demonstration: Implicit Regularization in Asymmetric BM}{6}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Experimental Setup}{6}{subsubsection.4.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Results and Implications}{6}{subsubsection.4.3.2}\protected@file@percent }
 \newlabel{fig:implicit_reg}{{\caption@xref {fig:implicit_reg}{ on input line 553}}{6}{Results and Implications}{figure.caption.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Implicit regularization effect of near-origin initialization in asymmetric BM matrix completion.\relax }}{6}{figure.caption.6}\protected@file@percent }
 \newlabel{fig:implicit_reg2}{{5}{6}{Implicit regularization effect of near-origin initialization in asymmetric BM matrix completion.\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Modelling Attention as an Asymmetric BM Problem}{7}{subsection.4.4}\protected@file@percent }
-\newlabel{eq:attn_obj}{{14}{7}{Modelling Attention as an Asymmetric BM Problem}{equation.4.14}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Classical Matrix Completion Prediction}{7}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Modelling Attention as an Asymmetric BM Problem}{6}{subsection.4.4}\protected@file@percent }
+\newlabel{eq:attn_obj}{{14}{6}{Modelling Attention as an Asymmetric BM Problem}{equation.4.14}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Classical Matrix Completion Prediction}{6}{subsubsection.4.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Connection to Implicit Regularization}{7}{subsubsection.4.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Linear vs. Softmax Factorization}{7}{subsection.4.5}\protected@file@percent }
 \newlabel{sec:warp_drive}{{4.5}{7}{Linear vs. Softmax Factorization}{subsection.4.5}{}}
@@ -79,7 +79,7 @@
 \newlabel{sec:param_comparison}{{4.7}{7}{Empirical Exploration: Comparing Parameters}{subsection.4.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Empirical Exploration: Comparing Parameters}{7}{subsection.4.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.1}Effect of Precision}{7}{subsubsection.4.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.2}Effect of Temperature}{8}{subsubsection.4.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.2}Effect of Temperature}{7}{subsubsection.4.8.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Empirical exploration comparing parameters on factorization success.\relax }}{8}{figure.caption.8}\protected@file@percent }
 \newlabel{fig:param_comparison}{{7}{8}{Empirical exploration comparing parameters on factorization success.\relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.9}The Pataki Bound Fails: Moving Focus to Structure}{8}{subsection.4.9}\protected@file@percent }
@@ -89,7 +89,7 @@
 \newlabel{eq:margin}{{15}{8}{From Equalities to Margin Inequalities}{equation.5.15}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Setup: Applying Margin Rank Theory}{8}{subsection.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Hypothesis}{8}{subsubsection.5.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Application Methodology}{9}{subsubsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Application Methodology}{8}{subsubsection.5.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}SDP Relaxation and KKT Dual Certificate}{9}{subsection.5.3}\protected@file@percent }
 \newlabel{sec:kkt}{{5.3}{9}{SDP Relaxation and KKT Dual Certificate}{subsection.5.3}{}}
 \newlabel{eq:margin_rank_bound}{{18}{9}{SDP Relaxation and KKT Dual Certificate}{equation.5.18}{}}
@@ -98,10 +98,10 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Failure of Implicit Regularization}{9}{subsubsection.5.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.2}Analysis of the Failure}{9}{subsubsection.5.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.3}Resolution via Hard Bottleneck}{9}{subsubsection.5.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}The Hard Bottleneck Predictor Algorithm}{10}{subsection.5.6}\protected@file@percent }
-\newlabel{sec:hard_bottleneck}{{5.6}{10}{The Hard Bottleneck Predictor Algorithm}{subsection.5.6}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Hard Bottleneck Margin Rank Predictor\relax }}{10}{algorithm.1}\protected@file@percent }
-\newlabel{alg:hbp}{{1}{10}{Hard Bottleneck Margin Rank Predictor\relax }{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}The Hard Bottleneck Predictor Algorithm}{9}{subsection.5.6}\protected@file@percent }
+\newlabel{sec:hard_bottleneck}{{5.6}{9}{The Hard Bottleneck Predictor Algorithm}{subsection.5.6}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Hard Bottleneck Margin Rank Predictor\relax }}{9}{algorithm.1}\protected@file@percent }
+\newlabel{alg:hbp}{{1}{9}{Hard Bottleneck Margin Rank Predictor\relax }{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Theoretical Sketch: Correctness of the Hard Bottleneck}{10}{subsection.5.7}\protected@file@percent }
 \newlabel{conj:strict_saddle}{{5.5}{10}{Strict Saddle at Corrected Rank}{theorem.5.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Phase III (Continued): Synthetic Validation}{10}{section.6}\protected@file@percent }
@@ -115,7 +115,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Key Finding}{10}{subsection.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Empirical Validation on GPT-2}{10}{section.7}\protected@file@percent }
 \newlabel{sec:gpt2}{{7}{10}{Empirical Validation on GPT-2}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Experimental Setup}{11}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Experimental Setup}{10}{subsection.7.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Results: Attention Sink Redundancy (Layer 4)}{11}{subsection.7.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Results: Heterogeneous Capacity Profiling (Layer 8)}{11}{subsection.7.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Heterogeneous Capacity Profiling in GPT-2 Layer 8.\relax }}{11}{figure.caption.10}\protected@file@percent }
@@ -124,17 +124,17 @@
 \@writefile{toc}{\contentsline {section}{\numberline {8}Implications for Transformer Architecture}{11}{section.8}\protected@file@percent }
 \newlabel{sec:implications}{{8}{11}{Implications for Transformer Architecture}{section.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Typology of Attention Head Geometry}{11}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}The Power-Law of Language Geometry}{11}{subsection.8.2}\protected@file@percent }
 \citation{kobayashi2024lowrank}
 \citation{srebroshraibman2005}
 \citation{kobayashi2024lowrank}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}The Power-Law of Language Geometry}{12}{subsection.8.2}\protected@file@percent }
+\citation{kobayashi2024lowrank}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Practical Applications}{12}{subsection.8.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}Lossless Surgical Pruning (SVD Compression)}{12}{subsubsection.8.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.2}Proxy-Driven Architectural Search}{12}{subsubsection.8.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.3}Dynamic Token Routing}{12}{subsubsection.8.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {9}Empirical Equivalence of Factored L2 and Nuclear Norm Regularization in Asymmetric Burer-Monteiro Factorization}{12}{section.9}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Introduction}{12}{subsection.9.1}\protected@file@percent }
-\citation{kobayashi2024lowrank}
 \citation{kobayashi2024lowrank}
 \citation{rechtfazelparrilo2010}
 \citation{tu2016procrustes}
@@ -159,9 +159,9 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Singular values of $W = UV^T$ at convergence, log scale. The cliff at index $r^*$ separates kept singular values ($\mathcal  {O}(0.1)$ to $\mathcal  {O}(1)$) from pruned ones ($\mathcal  {O}(10^{-7})$). $L_2$ and nuclear norm curves overlap.\relax }}{15}{figure.caption.12}\protected@file@percent }
 \newlabel{fig:svd_spectrum}{{10}{15}{Singular values of $W = UV^T$ at convergence, log scale. The cliff at index $r^*$ separates kept singular values ($\mathcal {O}(0.1)$ to $\mathcal {O}(1)$) from pruned ones ($\mathcal {O}(10^{-7})$). $L_2$ and nuclear norm curves overlap.\relax }{figure.caption.12}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {9.6.2}Iteration Cost: A Practical Asymmetry}{15}{subsubsection.9.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.6.3}Why the Iteration Cost Diverges}{15}{subsubsection.9.6.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces The $L_2$ runs converge under the early-stopping criterion well before the iteration budget is exhausted. The nuclear norm runs reach the maximum step count in every cell.\relax }}{15}{figure.caption.13}\protected@file@percent }
 \newlabel{fig:iters}{{11}{15}{The $L_2$ runs converge under the early-stopping criterion well before the iteration budget is exhausted. The nuclear norm runs reach the maximum step count in every cell.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.6.3}Why the Iteration Cost Diverges}{15}{subsubsection.9.6.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {9.7}Conclusion}{15}{subsection.9.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {10}Discussion}{16}{section.10}\protected@file@percent }
 \newlabel{sec:discussion}{{10}{16}{Discussion}{section.10}{}}
