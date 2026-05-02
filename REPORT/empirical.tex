@@ -19,7 +19,7 @@ To circumvent this scaling bottleneck, the Burer-Monteiro (BM) factorization int
 \end{equation}
 where $Y \in \mathbb{R}^{n \times p}$ and the rank parameter $p \ll n$. 
 
-This reduces the search space from $O(n^2)$ to $O(np)$ parameters. However, substituting $X = YY^T$ transforms the objective into a \textbf{non-convex} polynomial function in $Y$. In classical optimization, introducing non-convexity is perilous because it creates a landscape riddled with spurious local minima—"fake valleys" where gradient descent algorithms get irreversibly trapped before reaching the global optimum \cite{sahiner2022scaling}.
+This reduces the search space from $O(n^2)$ to $O(np)$ parameters. However, substituting $X = YY^T$ transforms the objective into a \textbf{non-convex} polynomial function in $Y$. In classical optimization, introducing non-convexity is perilous because it creates a landscape riddled with spurious local minima, "fake valleys" where gradient descent algorithms get irreversibly trapped before reaching the global optimum \cite{sahiner2022scaling}.
 
 \subsubsection{The Barvinok-Pataki Bound}
 The theoretical miracle of the Burer-Monteiro method is that under specific geometric conditions, the non-convex landscape is mathematically guaranteed to be free of spurious local minima \cite{cifuentes2022polynomial}. 
@@ -122,7 +122,7 @@ This boundary behavior highlights a critical practical reality: while the Barvin
 \textbf{Colab Notebook:} \url{https://colab.research.google.com/drive/1Lod9b9ub9jIbk2u671xL-VfdP8AVDfEn?usp=sharing}
 
 \subsection{Theoretical Background}
-Classical statistical learning theory posits that massively over-parameterized models—those possessing vastly more parameters than training data points—are highly susceptible to overfitting. Without explicit regularization penalties (e.g., $L_1$ or $L_2$ norms), such models typically memorize training noise and fail to generalize to unseen data.
+Classical statistical learning theory posits that massively over-parameterized models, those possessing vastly more parameters than training data points, are highly susceptible to overfitting. Without explicit regularization penalties (e.g., $L_1$ or $L_2$ norms), such models typically memorize training noise and fail to generalize to unseen data.
 
 However, modern deep learning empirically contradicts this. Deep neural networks, despite being heavily over-parameterized, naturally generalize well when trained with simple gradient-based optimization. This phenomenon is known as \textbf{Implicit Regularization}. The Burer-Monteiro (BM) factorization provides a rigorous mathematical proxy to study this mechanism.
 

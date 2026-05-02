@@ -1,7 +1,7 @@
 % ============================================================
 %  The Geometry of Attention: From Burer-Monteiro Factorization
 %  to Margin Rank Theory
-%  IE210 Optimization Modelling — IIT Bombay — 2026
+%  IE210 Optimization Modelling ,  IIT Bombay ,  2026
 % ============================================================
 % \documentclass[12pt, a4paper]{article}
 
@@ -25,7 +25,7 @@
 % \pgfplotsset{compat=1.18}
 % \usetikzlibrary{arrows.meta, positioning}
 
-% % ---------- theorem environments ----------
+% % , , , - theorem environments , , , -
 % \theoremstyle{plain}
 % \newtheorem{theorem}{Theorem}[section]
 % \newtheorem{lemma}[theorem]{Lemma}
@@ -37,7 +37,7 @@
 % \theoremstyle{remark}
 % \newtheorem{conjecture}[theorem]{Conjecture}
 
-% % ---------- math macros ----------
+% % , , , - math macros , , , -
 % \newcommand{\R}{\mathbb{R}}
 % \newcommand{\N}{\mathbb{N}}
 % \newcommand{\E}{\mathbb{E}}
@@ -50,18 +50,18 @@
 % \newcommand{\diag}{\operatorname{diag}}
 % \DeclareMathOperator*{\argmin}{arg\,min}
 
-% % ---------- header / footer ----------
+% % , , , - header / footer , , , -
 % \setlength{\headheight}{14pt}
 % \pagestyle{fancy}
 % \fancyhf{}
-% \rhead{\small IE210 --- IIT Bombay 2026}
+% \rhead{\small IE210 ,  IIT Bombay 2026}
 % \lhead{\small The Geometry of Attention}
 % \cfoot{\thepage}
 
 % % ============================================================
 % \begin{document}
 
-% ---------- title page ----------
+% , , , - title page , , , -
 
 
 % ============================================================
@@ -124,12 +124,12 @@ reasoning is as follows.
 Classical BM theory predicts that recovering an $n \times n$ matrix from $m$ linear
 equality constraints requires inner rank $p \geq \sqrt{2m}$ for optimization to be
 landscape-safe. For an $n \times n$ attention matrix with $m = n^2$ constraints, this gives
-$p \approx n\sqrt{2}$---well beyond the sequence length itself. Yet in practice, small
+$p \approx n\sqrt{2}$, well beyond the sequence length itself. Yet in practice, small
 $d_{\text{head}}$ values work empirically. This gap between theory and practice motivated
 our investigation.
 
 The resolution comes in two steps. First, the Softmax operator is not a passive
-nonlinearity---it actively absorbs $n$ row-sum constraints via its Jacobian null space,
+nonlinearity, it actively absorbs $n$ row-sum constraints via its Jacobian null space,
 reducing the effective constraint count from $m = n^2$ to $m_{\text{eff}} = n(n-1)$.
 Second, even this corrected count over-predicts $p^*$, because the problem has shifted from
 linear algebra (exact equalities) to computational geometry (margin inequalities). The true
@@ -137,7 +137,7 @@ structural capacity of an attention head is governed by its \emph{Margin Rank}: 
 embedding dimension needed to geometrically separate target tokens from distractor tokens.
 
 Empirically, GPT-2 heads exhibit Margin Ranks of 1--5 out of an allocated $d_{\text{head}}
-= 64$---an 80--97\% redundancy. This motivates the design of Heterogeneous Transformers
+= 64$, an 80--97\% redundancy. This motivates the design of Heterogeneous Transformers
 with dynamically allocated, head-specific embedding dimensions.
 
 % ============================================================
@@ -157,7 +157,7 @@ with dynamically allocated, head-specific embedding dimensions.
 
 Geometrically, a PSD matrix ensures that the applied linear transformation never reflects a
 vector into its exact opposite half-space, guaranteeing all eigenvalues are non-negative.
-The set of PSD matrices forms a convex cone---the \emph{spectrahedron}---inside which any
+The set of PSD matrices forms a convex cone, the \emph{spectrahedron}, inside which any
 local optimum is guaranteed to be global.
 
 The primal formulation of the standard Semidefinite Program (SDP) operates over symmetric
@@ -281,9 +281,12 @@ proving that a low-rank optimal solution exists within the original spectrahedro
 guaranteed by the Barvinok-Pataki Theorem.
 
 \begin{theorem}[Barvinok-Pataki]
-  Let $\mathcal{F} = \{Y \in \Sym^n : \tr(A_i Y) = b_i,\; Y \succeq 0\}$ be a non-empty
-  spectrahedron defined by $m$ linearly independent affine constraints. Any extreme point
-  $Y_{\text{ext}}$ of $\mathcal{F}$ has rank $r$ satisfying:
+  Let $\mathcal{F}$ be a non-empty spectrahedron defined by $m$ linearly independent
+  affine constraints:
+  \begin{equation*}
+      \mathcal{F} = \{Y \in \Sym^n : \tr(A_i Y) = b_i,\; Y \succeq 0\}.
+  \end{equation*}
+  Any extreme point $Y_{\text{ext}}$ of $\mathcal{F}$ has rank $r$ satisfying:
   \begin{equation}
   \begin{aligned}
     \frac{r(r+1)}{2} \leq m \implies 
@@ -337,7 +340,7 @@ architecture:
         provides the exact global optimum $v_{\text{opt}}$.
   \item \textbf{Non-convex solver (PyTorch L-BFGS).} We optimize the BM
         objective~\eqref{eq:bm} using a quadratic penalty method with a continuation
-        schedule $\lambda \in \{10, 100, 1000, 10000\}$.
+        schedule using $\lambda$ values $10$, $100$, $1000$, and $10000$.
 \end{itemize}
 We fix $n = 7$, sweep $m \in [1,28]$ and $p \in [1,7]$, and run 10 independent trials per
 $(m,p)$ cell. A trial is labelled a success if the PyTorch objective is within $10^{-3}$ of
@@ -360,6 +363,13 @@ Our results show that three distinct regions are visible in the success-rate hea
         40\% and 80\% are observed.
 \end{description}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{phase_transition.png}
+  \caption{Empirical Verification of the Phase Transition.}
+  \label{fig:phase_transition}
+\end{figure}
+
 These results cleanly replicate for $n \in \{3,5,6\}$ as well, confirming the theoretical
 prediction. Attempting to scale the penalty-method BM solver to $n \geq 7$ without a
 continuation strategy causes systematic failure due to Jacobian ill-conditioning, the
@@ -368,33 +378,21 @@ near-zero initialization.
 
 \subsection{Thinking About BM in Machine Learning: Implicit Regularization}
 
-Having verified the BM landscape guarantees, we next investigated whether the BM geometric
-structure induces a useful inductive bias---specifically, whether gradient descent implicitly
-minimizes the nuclear norm of the recovered matrix.
+% While scaling the penalty-method solver exposed the brutal realities of the non-convex landscape, particularly the severe ``origin trap'' when starting from near-zero initializations, this exact hazard presents a fascinating paradox in modern deep learning. During our literature review, we read online about a phenomenon known as \emph{implicit regularization}. The literature suggested that what acts as a computational trap for a classical solver might actually be the secret engine of neural network generalization. 
 
-\subsubsection{Experimental Setup}
-We construct a matrix completion task. A ground-truth matrix $M_{\text{true}}
-\in \R^{50 \times 50}$ with intrinsic rank $r = 3$ is generated. A random mask reveals
-30\% of entries. Two over-parameterized BM networks $Y = UV^\top$ with $p = 50$ are trained
-with SGD on observed MSE:
-\begin{itemize}
-  \item \textbf{Model A (small init):} $U, V \sim \mathcal{N}(0,10^{-3})$. Hypothesis:
-        implicit bias drives $\norm{Y}_*$ toward the nuclear-norm minimum.
-  \item \textbf{Model B (large init):} $U, V \sim \mathcal{N}(0,1)$. Hypothesis: no
-        implicit bias; model memorizes training entries.
-\end{itemize}
+% Intrigued by the idea that gradient descent might actively harness this geometric hazard to enforce an Occam's Razor-like simplicity, we designed a series of matrix completion experiments to test it ourselves. Having mathematically validated the structural safety of the BM landscape, we transitioned from pure optimization theory to machine learning mechanics. Our objective was to uncover whether initializing near that dangerous origin natively steers the optimizer to implicitly minimize the nuclear norm, allowing it to effortlessly discover the most compressed, low-rank representation without any explicit penalty.
+% \subsection{Thinking About BM in Machine Learning: Implicit Regularization}
 
-\subsubsection{Results}
-The experimental results show that Model B (large init) trivially fits the observed entries but fails
-catastrophically on the hidden 70\%, with nuclear norm exploding to an arbitrary high value.
-Model A (small init), despite identical architecture, achieves test MSE converging to the
-MOSEK baseline. Its nuclear norm grows slowly from near-zero and \emph{asymptotes precisely
-to the MOSEK optimal nuclear norm}, never exceeding it.
+% Having verified the BM landscape guarantees, we next found through literature review that  whether the BM geometric
+% structure induces a useful inductive bias, specifically, whether gradient descent implicitly
+% minimizes the nuclear norm of the recovered matrix.
 
-This confirms that the BM geometric landscape, traversed from near the origin, functions as
-a \emph{self-regularizing engine}: gradient descent implicitly minimizes nuclear norm,
-automatically suppressing overfitting. The identity~\eqref{eq:nuclear_identity} is the
-mathematical foundation of this phenomenon.
+Classical statistical learning theory posits that massively over-parameterized models, those possessing vastly more parameters than training data points, are highly susceptible to overfitting. Without explicit regularization penalties (e.g., $L_1$ or $L_2$ norms), such models typically memorize training noise and fail to generalize to unseen data.
+
+However, through literature review we found that modern deep learning empirically contradicts this. Deep neural networks, despite being heavily over-parameterized, naturally generalize well when trained with simple gradient-based optimization. This phenomenon is known as \textbf{Implicit Regularization}. The Burer-Monteiro (BM) factorization provides a rigorous mathematical proxy to study this mechanism.
+
+
+
 
 % ============================================================
 \section{Phase II: Applying BM to Transformer Attention}
@@ -403,22 +401,117 @@ mathematical foundation of this phenomenon.
 
 \subsection{Context: The Transformer and Self-Attention}
 
-The Transformer architecture (Vaswani et al., 2017) processes sequences of $n$ token
-embeddings via multi-head self-attention. Each head computes query matrix $Q \in \R^{n
-\times d_{\text{head}}}$ and key matrix $K \in \R^{n \times d_{\text{head}}}$ via learned
-linear projections, then computes an attention distribution:
+% The Transformer architecture (Vaswani et al., 2017) processes sequences of $n$ token
+% embeddings via multi-head self-attention. Each head computes query matrix $Q \in \R^{n
+% \times d_{\text{head}}}$ and key matrix $K \in \R^{n \times d_{\text{head}}}$ via learned
+% linear projections, then computes an attention distribution:
+% \begin{equation}
+%   A = \Softmax\!\left(\frac{QK^\top}{\sqrt{d_{\text{head}}}}\right).
+% \end{equation}
+% The attention matrix $A \in \R^{n \times n}$ determines how each token aggregates
+% information from the rest of the sequence. Its structure encodes linguistic relationships:
+% syntactic dependencies, coreference, induction patterns, and more.
+
+% The universal practice of setting $d_{\text{head}} = 64$ or $128$ is driven purely by
+% hardware efficiency (DRAM alignment, tensor core tile sizes) rather than any principled
+% analysis of the structural complexity of the attention patterns these heads must express.
+
+
+% The Transformer is the dominant sequence modeling architecture
+% in modern NLP and beyond. At its core, each layer applies \emph{multi-head self-attention},
+% which allows every token in a sequence to selectively aggregate information from all other
+% tokens in a single, parallelizable operation.
+
+% Formally, given a sequence of $n$ token embeddings, each attention head projects them into
+% queries $Q \in \mathbb{R}^{n \times d_{\text{head}}}$ and keys $K \in \mathbb{R}^{n \times
+% d_{\text{head}}}$ via learned linear maps, and computes a soft routing matrix:
+% \begin{equation}
+%   A = \operatorname{Softmax}\!\left(\frac{QK^\top}{\sqrt{d_{\text{head}}}}\right) \in
+%   \mathbb{R}^{n \times n}.
+%   \label{eq:attention}
+% \end{equation}
+% Each row of $A$ is a probability distribution: entry $A_{ij}$ encodes how much token $i$
+% attends to token $j$. The matrix $A$ therefore serves as a structured, data-dependent
+% aggregation kernel whose geometry encodes rich linguistic relationships, syntactic
+% dependencies, coreference, and induction patterns among them.
+
+% The central object driving all of this is the \emph{logit matrix} $L = QK^\top \in
+% \mathbb{R}^{n \times n}$, whose entries are pre-softmax attention scores. It is the
+% structure of $L$, and specifically the question of what rank is \emph{sufficient} to
+% express it, that motivates the BM analysis that follows. The universal practice of fixing
+% $d_{\text{head}} \in \{64, 128\}$ is dictated by hardware constraints (DRAM alignment,
+% tensor core tile sizes) rather than any principled study of the structural complexity of
+% the patterns these heads must represent. This gap is precisely what the Burer--Monteiro
+% lens addresses.
+
+
+Modern language tasks (e.g., translation, summarization, question answering) require a model
+to process an ordered sequence of tokens (words or subword units) and produce outputs that
+respect long-range dependencies: a pronoun near the end of a paragraph may refer to a
+noun introduced at the very beginning. The central challenge is therefore not just
+processing individual tokens, but learning \emph{which tokens should inform which other
+tokens}, and by how much.
+
+The Transformer addresses this through \emph{self-attention}:
+a mechanism that, for every token in the sequence, computes a weighted average over all
+other tokens, where the weights are learned and input-dependent. Concretely, given a
+sequence of $n$ tokens represented as row vectors stacked into a matrix $X \in
+\mathbb{R}^{n \times d_{\text{model}}}$, the model learns three linear projections
+$W_Q, W_K, W_V$ and computes:
 \begin{equation}
-  A = \Softmax\!\left(\frac{QK^\top}{\sqrt{d_{\text{head}}}}\right).
+  Q = XW_Q, \quad K = XW_K, \quad V = XW_V,
+  \label{eq:qkv}
 \end{equation}
-The attention matrix $A \in \R^{n \times n}$ determines how each token aggregates
-information from the rest of the sequence. Its structure encodes linguistic relationships:
-syntactic dependencies, coreference, induction patterns, and more.
+where $Q, K, V \in \mathbb{R}^{n \times d_{\text{head}}}$ are called the \emph{query},
+\emph{key}, and \emph{value} matrices respectively. Intuitively, $Q$ encodes what each
+token is \emph{looking for}, $K$ encodes what each token \emph{offers}, and $V$ encodes
+the actual content that will be retrieved.
 
-The universal practice of setting $d_{\text{head}} = 64$ or $128$ is driven purely by
-hardware efficiency (DRAM alignment, tensor core tile sizes) rather than any principled
-analysis of the structural complexity of the attention patterns these heads must express.
+Compatibility between token $i$ and token $j$ is measured by the dot product of their
+query and key vectors. Collecting all $n^2$ such scores into a matrix and normalizing
+yields the \emph{attention distribution}:
+\begin{equation}
+  A = \operatorname{Softmax}\!\left(\frac{QK^\top}{\sqrt{d_{\text{head}}}}\right)
+  \in \mathbb{R}^{n \times n},
+  \label{eq:attention}
+\end{equation}
+where Softmax is applied row-wise so that each row of $A$ sums to one. Entry $A_{ij}$
+is therefore a probability: how much token $i$ attends to token $j$. The output of the
+attention head is then $AV$, a weighted mixture of value vectors, which each token uses
+to update its own representation. The scalar $\frac{1}{\sqrt{d_{\text{head}}}}$ is a
+stabilizing factor that prevents dot products from growing so large that the Softmax
+saturates and gradients vanish during training.
 
-\subsection{The Need for Asymmetric Factorization}
+The matrix that entirely governs this routing is the \emph{logit matrix}:
+\begin{equation}
+  L \;=\; \frac{QK^\top}{\sqrt{d_{\text{head}}}} \;\in\; \mathbb{R}^{n \times n}.
+  \label{eq:logit}
+\end{equation}
+Softmax is a monotone, row-wise normalization, so the \emph{structure} of attention
+(which tokens attend to which, and how sharply) is determined entirely by $L$. Since $Q$
+and $K$ are both rank-$d_{\text{head}}$ matrices, $L = QK^\top$ is constrained to be a
+\textbf{rank-$d_{\text{head}}$ matrix} by construction. This is the key observation: the
+expressive capacity of every attention head is implicitly bounded by $d_{\text{head}}$,
+regardless of sequence length $n$ or task complexity.
+
+In practice, $d_{\text{head}}$ is almost universally set to $64$ or $128$, a choice
+driven entirely by hardware efficiency rather
+than any principled analysis of how much rank is actually needed to express the attention
+patterns a given head must learn. This gap between engineering convention and theoretical
+understanding motivates the analysis that follows. By viewing $L = QK^\top$ as a
+Burer--Monteiro (BM) factorization, we gain a precise framework for studying the rank
+requirements, optimization landscape, and implicit regularization properties of
+self-attention.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{transformer_arch.png}
+  \caption{The Transformer architecture and self-attention mechanism.}
+  \label{fig:transformer_arch}
+\end{figure}
+
+\subsection{The Need for Asymmetric BM Factorization}
 
 The logit matrix $L = QK^\top \in \R^{n\times n}$ is \emph{asymmetric}: $Q$ and $K$ are
 distinct matrices. This places the problem squarely in the asymmetric BM regime ($Y =
@@ -432,8 +525,49 @@ the BM convergence machinery, we construct a block-matrix adapter $R$:
   RR^\top = \begin{bmatrix} QQ^\top & QK^\top \\ KQ^\top & KK^\top \end{bmatrix}.
   \label{eq:block_adapter}
 \end{equation}
-The off-diagonal block $QK^\top$---the attention logit matrix---is thereby embedded inside a
+The off-diagonal block $QK^\top$, the attention logit matrix, is thereby embedded inside a
 symmetric PSD matrix $RR^\top$.
+
+\subsection{Empirical Demonstration: Implicit Regularization in Asymmetric BM}
+To illustrate how this asymmetric parameterization ($Y = UV^\top$) behaves in practice, we delved into an exploration led by a literature-review-based fact about implicit regularization. To specifically observe how this phenomenon manifests when the factors are distinct, we first designed a controlled matrix completion experiment before directly tackling the Softmax attention objective.
+
+\subsubsection{Experimental Setup}
+We construct a synthetic matrix completion task targeting a ground-truth matrix $M_{\text{true}} \in \R^{50 \times 50}$ with an intrinsic low rank of $r = 3$. A random mask hides 70\% of the entries, leaving only 30\% observed. We then train two over-parameterized asymmetric BM networks ($Y = UV^\top$ with an excessive inner dimension $p = 50$) using standard Stochastic Gradient Descent (SGD) on the Mean Squared Error of the observed entries.
+
+To test the effect of initialization scale on implicit bias, we compare two variants:
+\begin{itemize}
+  \item \textbf{Model A (Near-Origin Initialization):}\\ 
+        $U, V \sim \mathcal{N}(0,10^{-3})$. 
+        We hypothesize that starting near the origin triggers an implicit bias, driving the 
+        recovered matrix toward the optimal nuclear-norm minimum.
+  \item \textbf{Model B (Large Initialization):}\\ 
+        $U, V \sim \mathcal{N}(0,1)$. We hypothesize that without the origin's geometric influence, this implicit bias vanishes, causing the model to naively memorize the training data.
+\end{itemize}
+
+\subsubsection{Results and Implications}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{implicit_reg.png}
+ 
+  \label{fig:implicit_reg}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{implicit_reg2.png}
+   \caption{Implicit regularization effect of near-origin initialization in asymmetric BM matrix completion.}
+  \label{fig:implicit_reg2}
+\end{figure}
+
+
+The outcomes strongly confirm the impact of initialization on the optimization landscape. Model B (the large initialization) trivially interpolates the observed training entries but fails catastrophically on the 70\% hidden data, with its nuclear norm ballooning to arbitrarily high values. 
+
+In stark contrast, Model A (the near-origin initialization) achieves a test error that cleanly converges to the exact global optimum computed by a rigorous convex solver (MOSEK). Throughout training, its nuclear norm grows slowly from zero and precisely asymptotes to the MOSEK-derived optimal nuclear norm, without ever overshooting it.
+
+This controlled experiment demonstrates that the asymmetric BM landscape, when traversed from near the origin, acts as a native \emph{self-regularizing engine}. Gradient descent implicitly minimizes the nuclear norm, thereby automatically suppressing overfitting without any explicit penalty terms. The mathematical foundation of this phenomenon is precisely the variational identity~\eqref{eq:nuclear_identity}, confirming that our theoretical symmetric embedding holds practical weight in the asymmetric regime.
+
+
 
 \subsection{Modelling Attention as an Asymmetric BM Problem}
 
@@ -453,13 +587,13 @@ In the linear (no-Softmax) case, this
 is precisely the asymmetric BM factorization for recovering a matrix $M$ from $n^2$
 equality constraints $L_{ij} = M_{ij}$. Classical matrix completion theory (Cand\`{e}s
 and Recht, 2009) predicts that recovery requires $p \geq \sqrt{2 n^2} = n\sqrt{2}$, which
-for $n = 20$ yields $p^* \approx 28$---exceeding the sequence length itself.
+for $n = 20$ yields $p^* \approx 28$, exceeding the sequence length itself.
 
 \subsubsection{Connection to Implicit Regularization}
 Frobenius regularization on $Q$ and $K$
 implicitly minimizes the nuclear norm of the logit matrix via identity~\eqref{eq:nuclear_identity}.
 This embedding is what allows us to import the symmetric BM convergence guarantees as a
-starting framework---while also clarifying exactly \emph{where} they break down when Softmax
+starting framework, while also clarifying exactly \emph{where} they break down when Softmax
 is introduced.
 
 \subsection{The Geometric Warp Drive: Ablation Experiment}
@@ -489,9 +623,16 @@ manifest as a smaller $p^*$.
         collapses the dimensional requirement by an order of magnitude.
 \end{description}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{softmaxvsnonsoftmax_phasetransition.jpeg}
+  \caption{The Geometric Warp Drive: Softmax factorization induces massive structural compression.}
+  \label{fig:warp_drive}
+\end{figure}
+
 At low precision thresholds ($\varepsilon = 10^{-5}$), success often occurs even at $p=1$,
 confirming that the Pataki bound ($p \approx 6.32$ for $n=20$, $m=20$) is not merely
-loose---it is inapplicable to this setting.
+loose, it is inapplicable to this setting.
 
 \begin{remark}[Mathematical Misapplication of the Pataki Bound]
   Applying the Barvinok-Pataki bound to predict the minimum head dimension $d_{\text{head}}$
@@ -525,15 +666,15 @@ embedding of the token manifold.
 In the classical (linear) setting, satisfying $n^2$ equality constraints requires
 $\rank(L) = n$. With Softmax, the effective constraint count is reduced to
 $m_{\text{eff}} = n^2 - n = n(n-1)$, and the corrected Barvinok-Pataki bound gives
-$p^*(p^*+1)/2 \leq n(n-1)$, which for $n=20$ gives $p^* \lesssim 20$---still loose, but
+$p^*(p^*+1)/2 \leq n(n-1)$, which for $n=20$ gives $p^* \lesssim 20$, still loose, but
 already drastically tighter than the linear bound.
 
 \subsection{Empirical Exploration: Comparing Parameters}
 \label{sec:param_comparison}
 
 \subsubsection{Effect of Precision}
-We swept the success-rate threshold $\varepsilon \in
-\{10^{-3}, 10^{-5}, 10^{-8}\}$ across ranks $p \in \{1,\ldots,20\}$ for multiple target
+We swept the success-rate threshold using values $\varepsilon = 10^{-3}$, $10^{-5}$, and $10^{-8}$
+across ranks $p \in \{1,\ldots,20\}$ for multiple target
 structures. The minimum feasible rank $p^*(\varepsilon)$ increases with precision: achieving
 $\varepsilon = 10^{-8}$ for the Identity matrix requires $p^* = 3$ (a 3D spherical
 arrangement) rather than $p^* = 2$, because higher precision demands greater angular
@@ -545,8 +686,8 @@ The success rate exhibits non-monotone behaviour with $p$: excessive over-parame
 \texttt{ReduceLROnPlateau} scheduler was required to ``zoom in'' on the narrow global minimum.
 
 \subsubsection{Effect of Temperature}
-Sweeping the Softmax temperature $\tau \in
-\{0.1, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0\}$ at fixed precision $\varepsilon = 10^{-5}$, the
+Sweeping the Softmax temperature across values $\tau = 0.1, 0.3, 0.5, 1.0, 2.0, 5.0,$ and $10.0$
+at fixed precision $\varepsilon = 10^{-5}$, the
 minimum rank $p^*(\tau)$ varies across the temperature range. Lower temperatures (sharper
 Softmax) amplify the separation between target and distractor logits, reducing the margin
 requirement and allowing lower-dimensional embeddings to succeed. Higher temperatures
@@ -555,10 +696,27 @@ requirement and allowing lower-dimensional embeddings to succeed. Higher tempera
 These results confirm that $p^*$ is not a fixed constant but a function
 $p^*(\varepsilon, \text{eff}_r, \tau)$ of precision, target structure, and temperature.
 
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{factor_exploration1.jpeg}
+    \caption{Effect of precision.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{factor_exploration2.jpeg}
+    \caption{Effect of temperature.}
+  \end{subfigure}
+  \caption{Empirical exploration comparing parameters on factorization success.}
+  \label{fig:param_comparison}
+\end{figure}
+
 \subsection{The Pataki Bound Fails: Moving Focus to Structure}
 
-The assumption underlying the Pataki bound---that the factorization must satisfy $m$
-independent linear equality constraints---is simply wrong for the Softmax attention setting.
+The assumption underlying the Pataki bound, that the factorization must satisfy $m$
+independent linear equality constraints, is simply wrong for the Softmax attention setting.
 Two structural violations occur:
 \begin{enumerate}
   \item \textbf{Asymmetry.} The logit matrix $QK^\top$ is not constrained to be symmetric
@@ -605,7 +763,7 @@ separation).
 Our primary hypothesis is that Margin Rank, not linear rank, is the correct measure of structural
 capacity for a Transformer attention head. Consequently, the minimum factorization dimension
 $p^*$ required to faithfully synthesize a given attention pattern should be dramatically
-smaller than the classical Pataki bound---and should correlate with the topological
+smaller than the classical Pataki bound, and should correlate with the topological
 complexity of the attention graph, not the algebraic rank of $M$.
 
 \subsubsection{Application Methodology}
@@ -673,7 +831,7 @@ predict $p^*$ by directly optimizing the primal SDP via Hinge Loss and implicit
 regularization, using the resulting nuclear norm as a proxy for rank.
 
 \subsubsection{Failure of Implicit Regularization}
-The algorithm predicted $p^* = 20$ for the Identity matrix---the exact
+The algorithm predicted $p^* = 20$ for the Identity matrix, the exact
 opposite of the true answer of $p^* = 2$.
 
 \subsubsection{Analysis of the Failure}
@@ -689,6 +847,13 @@ structurally minimal low-dimensional one.
 To correctly compute the true Margin Rank, we must abandon implicit
 regularization entirely and enforce an \emph{explicit Hard Bottleneck}: restrict $p$ to a
 fixed integer and test whether the spatial geometry can satisfy the margin constraints.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{pseudo_rank.png}
+  \caption{The Norm vs. Dimension paradox: Margin-based models favour dimensions over norm.}
+  \label{fig:norm_vs_dim}
+\end{figure}
 
 \subsection{The Hard Bottleneck Predictor Algorithm}
 \label{sec:hard_bottleneck}
@@ -832,13 +997,13 @@ determine $p^*$.
 
 Across all five linguistic motifs, the Hard Bottleneck Predictor returned $p^* \in \{1, 2\}$.
 Visual inspection revealed the cause: every attention map exhibited \emph{Attention Sink}
-behaviour---the head routes nearly all probability mass to the first (BOS) token, regardless
+behaviour, the head routes nearly all probability mass to the first (BOS) token, regardless
 of linguistic content.
 
 This is a well-known phenomenon in mechanistic interpretability. When a head fails to detect
 its specialized grammatical pattern, the Softmax normalization constraint forces it to
 concentrate probability \emph{somewhere}; the first token acts as a neutral ``garbage
-collector''. The geometric task---separating Token 0 from all other tokens---is trivially
+collector''. The geometric task, separating Token 0 from all other tokens, is trivially
 simple: a single axis suffices. Allocating $d = 64$ dimensions to this head yields an
 estimated \textbf{97\% hardware redundancy}.
 
@@ -853,16 +1018,23 @@ The Layer 8 sweep reveals a heterogeneous capacity landscape:
 \begin{itemize}
   \item \textbf{Classical baseline:} $p = 24$ (sequence length).
   \item \textbf{Low-entropy heads (8 of 12):} $p^* \leq 3$. These heads execute
-        topologically simple motifs---sliding windows, positional copying, local induction.
+        topologically simple motifs, sliding windows, positional copying, local induction.
   \item \textbf{High-entropy routing heads (4 of 12):} $p^* \in \{4, 5\}$. Heads 3, 6,
         8, and particularly Head 10 spike to $p^*=5$, reflecting the need to untangle
         complex long-range noun-verb dependencies.
 \end{itemize}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{gpt4-8layer.jpeg}
+  \caption{Heterogeneous Capacity Profiling in GPT-2 Layer 8.}
+  \label{fig:gpt4_8layer}
+\end{figure}
+
 \subsubsection{Head 10: The Semantic Router}
 Head 10's $p^* = 5$ represents the true capacity
-bottleneck of this layer. The hard attention graph it implements---routing queries across a
-24-token window with high syntactic complexity---requires a 5-dimensional spatial manifold
+bottleneck of this layer. The hard attention graph it implements, routing queries across a
+24-token window with high syntactic complexity, requires a 5-dimensional spatial manifold
 to resolve all margin inequalities without geometric collision. Even so, this is a
 \textbf{79\% compression} relative to the 24-dimensional classical baseline.
 
@@ -906,7 +1078,7 @@ to compress the $Q$ and $K$ weight matrices:
   W_K \approx U_K^{(p^*)} \Sigma_K^{(p^*)} (V_K^{(p^*)})^\top.
 \]
 This mathematically guarantees preservation of the operational Softmax geometry while
-maximising hardware compression---in contrast to uniform pruning, which blindly discards
+maximising hardware compression, in contrast to uniform pruning, which blindly discards
 capacity regardless of geometric necessity.
 
 \subsubsection{Proxy-Driven Architectural Search}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 03:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 05:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1211,7 +1211,10 @@ LaTeX Warning: Unused global option(s):
 
 (./main.aux
 
-LaTeX Warning: Label `fig:pseudo_rank' multiply defined.
+LaTeX Warning: Label `eq:attention' multiply defined.
+
+
+LaTeX Warning: Label `fig:implicit_reg' multiply defined.
 
 )
 \openout1 = `main.aux'.
@@ -1456,64 +1459,57 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2]
+Underfull \vbox (badness 2126) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-Overfull \hbox (16.82814pt too wide) in paragraph at lines 284--287
-[][]\OT1/ptm/b/n/10 (-20) Theorem 4.1 \OT1/ptm/m/n/10 (-20) (Barvi-nok--Pataki)
-\OT1/ptm/b/n/10 (-20) . []\OT1/ptm/m/it/10 (-20) Let $\OMS/ztmcm/m/n/10 F \OT1/
-ztmcm/m/n/10 = \OMS/ztmcm/m/n/10 f\OML/ztmcm/m/it/10 Y \OMS/ztmcm/m/n/10 2 \U/m
-sb/m/n/10 S[] \OT1/ztmcm/m/n/10 : [](\OML/ztmcm/m/it/10 A[]Y\OT1/ztmcm/m/n/10 )
- =
- []
-
-
-Overfull \hbox (44.82924pt too wide) in paragraph at lines 338--341
-\OT1/ptm/m/n/10 (-20) method with a con-tin-u-a-tion sched-ule $\OML/ztmcm/m/it
-/10 ^^U \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 10\OML/ztmcm/m/it/10 ; \OT1/ztmc
-m/m/n/10 100\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1000\OML/ztmcm/m/it/10 ; \OT
-1/ztmcm/m/n/10 10000\OMS/ztmcm/m/n/10 g$\OT1/ptm/m/n/10 (-20) . 
- []
-
 [4]
-Overfull \hbox (12.67834pt too wide) in paragraph at lines 357--359
+Overfull \hbox (12.67834pt too wide) in paragraph at lines 360--362
 []\OT1/ptm/m/n/10 (-20) Increasing $\OML/ztmcm/m/it/10 p$ \OT1/ptm/m/n/10 (-20)
  be-yond $[]$ smooths
  []
 
-<images//phase_transition.png, id=392, 940.51375pt x 792.9625pt>
+<images//phase_transition.png, id=399, 940.51375pt x 792.9625pt>
 File: images//phase_transition.png Graphic file (type png)
 <use images//phase_transition.png>
-Package pdftex.def Info: images//phase_transition.png  used on input line 365.
+Package pdftex.def Info: images//phase_transition.png  used on input line 368.
 (pdftex.def)             Requested size: 228.19107pt x 192.38391pt.
-<images//transformer_arch.png, id=394, 1702.36pt x 2537.48pt>
+[5 <./images//phase_transition.png (PNG copy)>]
+<images//transformer_arch.png, id=407, 1702.36pt x 2537.48pt>
 File: images//transformer_arch.png Graphic file (type png)
 <use images//transformer_arch.png>
-Package pdftex.def Info: images//transformer_arch.png  used on input line 430.
-(pdftex.def)             Requested size: 228.19107pt x 340.10574pt.
+Package pdftex.def Info: images//transformer_arch.png  used on input line 509.
+(pdftex.def)             Requested size: 182.55354pt x 272.07684pt.
 
-Underfull \vbox (badness 6675) has occurred while \output is active []
-
- [5 <./images//phase_transition.png (PNG copy)>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6 <./images//transformer_arch.png>]
-<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=418, 1541.76pt x 756.8275
+<images//implicit_reg.png, id=417, 1405.25pt x 501.875pt>
+File: images//implicit_reg.png Graphic file (type png)
+<use images//implicit_reg.png>
+Package pdftex.def Info: images//implicit_reg.png  used on input line 551.
+(pdftex.def)             Requested size: 228.19107pt x 81.49628pt.
+<images//implicit_reg2.png, id=418, 1204.5pt x 501.875pt>
+File: images//implicit_reg2.png Graphic file (type png)
+<use images//implicit_reg2.png>
+Package pdftex.def Info: images//implicit_reg2.png  used on input line 558.
+(pdftex.def)             Requested size: 228.19107pt x 95.07388pt.
+
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+ [7 <./images//implicit_reg.png> <./images//implicit_reg2.png>]
+<images//softmaxvsnonsoftmax_phasetransition.jpeg, id=434, 1541.76pt x 756.8275
 pt>
 File: images//softmaxvsnonsoftmax_phasetransition.jpeg Graphic file (type jpg)
 <use images//softmaxvsnonsoftmax_phasetransition.jpeg>
 Package pdftex.def Info: images//softmaxvsnonsoftmax_phasetransition.jpeg  used
- on input line 508.
+ on input line 628.
 (pdftex.def)             Requested size: 228.19107pt x 112.00641pt.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
+86.
 
-Overfull \hbox (5.12202pt too wide) in paragraph at lines 556--562
-\OT1/ptm/m/n/10 (-20) We swept the success-rate thresh-old $\OML/ztmcm/m/it/10 
-" \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 10[]\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/
-n/10 10[]\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 10[]\OMS/ztmcm/m/n/10 g$
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-66.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1522,111 +1518,87 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (8.79422pt too wide) in paragraph at lines 563--567
+Overfull \hbox (8.79422pt too wide) in paragraph at lines 683--687
 \OT1/ptm/m/n/10 (-20) monotone be-haviour with $\OML/ztmcm/m/it/10 p$\OT1/ptm/m
 /n/10 (-20) : ex-ces-sive over-parameterisation
  []
 
 
-Overfull \hbox (0.56718pt too wide) in paragraph at lines 563--567
+Overfull \hbox (0.56718pt too wide) in paragraph at lines 683--687
 \OT1/ptm/m/n/10 (-20) precision con-ver-gence. A \OT1/pcr/m/n/10 ReduceLROnPlat
 eau \OT1/ptm/m/n/10 (-20) sched-
  []
 
-
-Overfull \hbox (52.93936pt too wide) in paragraph at lines 569--575
-\OT1/ptm/m/n/10 (-20) Sweeping the Soft-max tem-per-a-ture $\OML/ztmcm/m/it/10 
-^^\ \OMS/ztmcm/m/n/10 2 f\OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 1\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 3\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 0\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 5\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 2\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 5\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n/
-10 0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 10\OML/ztmcm/m/it/10 :\OT1/ztmcm/m/n
-/10 0\OMS/ztmcm/m/n/10 g$
- []
-
-<images//factor_exploration1.jpeg, id=419, 1606.0pt x 602.25pt>
+[8 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
+<images//factor_exploration1.jpeg, id=447, 1606.0pt x 602.25pt>
 File: images//factor_exploration1.jpeg Graphic file (type jpg)
 <use images//factor_exploration1.jpeg>
-Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 5
-83.
+Package pdftex.def Info: images//factor_exploration1.jpeg  used on input line 7
+03.
 (pdftex.def)             Requested size: 228.19107pt x 85.5642pt.
-<images//factor_exploration2.jpeg, id=420, 1606.0pt x 576.1525pt>
+<images//factor_exploration2.jpeg, id=448, 1606.0pt x 576.1525pt>
 File: images//factor_exploration2.jpeg Graphic file (type jpg)
 <use images//factor_exploration2.jpeg>
-Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 5
-89.
+Package pdftex.def Info: images//factor_exploration2.jpeg  used on input line 7
+09.
 (pdftex.def)             Requested size: 228.19107pt x 81.85641pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7 <./images//softmaxvsnonsoftmax_phasetransition.jpeg>]
-Overfull \hbox (0.56581pt too wide) in paragraph at lines 602--605
+Overfull \hbox (0.56581pt too wide) in paragraph at lines 722--725
 []\OT1/ptm/b/n/10 (-20) Asymmetry. \OT1/ptm/m/n/10 (-20) The logit ma-trix $\OM
 L/ztmcm/m/it/10 QK[]$ \OT1/ptm/m/n/10 (-20) is not con-strained
  []
 
 
-Overfull \hbox (7.79045pt too wide) detected at line 659
+Overfull \hbox (7.79045pt too wide) detected at line 779
 \OMS/ztmcm/m/n/10 L \OT1/ztmcm/m/n/10 = [] []  [] \OML/ztmcm/m/it/10 ;  X \OT1/
 ztmcm/m/n/10 = \OML/ztmcm/m/it/10 QK[]:
  []
 
-[8 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
-<images//pseudo_rank.png, id=450, 518.6878pt x 421.575pt>
+[9 <./images//factor_exploration1.jpeg> <./images//factor_exploration2.jpeg>]
+<images//pseudo_rank.png, id=464, 518.6878pt x 421.575pt>
 File: images//pseudo_rank.png Graphic file (type png)
 <use images//pseudo_rank.png>
-Package pdftex.def Info: images//pseudo_rank.png  used on input line 733.
+Package pdftex.def Info: images//pseudo_rank.png  used on input line 853.
 (pdftex.def)             Requested size: 228.19107pt x 185.46783pt.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 742.
+put line 862.
 
-Overfull \hbox (7.18346pt too wide) in paragraph at lines 754--756
+Overfull \hbox (7.18346pt too wide) in paragraph at lines 874--876
 [] $\OMS/ztmcm/m/n/10 L   [][] []  []$ 
  []
 
-[9 <./images//pseudo_rank.png>]
-Overfull \hbox (18.37645pt too wide) in paragraph at lines 832--835
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./images//pseudo_rank.png>]
+Overfull \hbox (18.37645pt too wide) in paragraph at lines 952--955
 \OT1/ptm/m/n/10 (-20) uni-form within-cluster at-ten-tion re-quire only a one-d
 imensional
  []
 
-[10]
-<images//gpt4-8layer.jpeg, id=479, 1003.75pt x 602.25pt>
+[11]
+<images//gpt4-8layer.jpeg, id=494, 1003.75pt x 602.25pt>
 File: images//gpt4-8layer.jpeg Graphic file (type jpg)
 <use images//gpt4-8layer.jpeg>
-Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 909.
+Package pdftex.def Info: images//gpt4-8layer.jpeg  used on input line 1029.
 (pdftex.def)             Requested size: 228.19107pt x 136.91559pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (5.23065pt too wide) in paragraph at lines 931--934
+Overfull \hbox (5.23065pt too wide) in paragraph at lines 1051--1054
 []\OT1/ptm/m/n/10 (-20) Diagonal or near-
  []
 
 
-Overfull \hbox (4.16676pt too wide) in paragraph at lines 934--937
+Overfull \hbox (4.16676pt too wide) in paragraph at lines 1054--1057
 []\OT1/ptm/m/n/10 (-20) Block-diagonal at-
  []
 
 
-Overfull \hbox (13.0604pt too wide) in paragraph at lines 937--940
+Overfull \hbox (13.0604pt too wide) in paragraph at lines 1057--1060
 \OT1/ptm/m/n/10 (-20) re-trieval heads with dif-fuse, sequence-length-dependent
 
  []
 
-[11 <./images//gpt4-8layer.jpeg>]
-Overfull \hbox (4.82898pt too wide) in paragraph at lines 959--963
-\OT1/ptm/m/n/10 (-20) compression---in con-trast to uni-form prun-ing, which bl
-indly
- []
-
-) (./nuclear.tex [12]
-Underfull \vbox (badness 1527) has occurred while \output is active []
-
-
+[12 <./images//gpt4-8layer.jpeg>]) (./nuclear.tex [13]
 Overfull \hbox (17.13824pt too wide) in paragraph at lines 46--48
 \OT1/ptm/m/n/10 (-20) where each $\OML/ztmcm/m/it/10 A[] \OMS/ztmcm/m/n/10 2 \U
 /msb/m/n/10 R[]$ \OT1/ptm/m/n/10 (-20) has en-tries drawn i.i.d. from $\OMS/ztm
@@ -1634,46 +1606,47 @@ cm/m/n/10 N\OT1/ztmcm/m/n/10 (0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1\OML/ztm
 cm/m/it/10 =N\OT1/ztmcm/m/n/10 )$\OT1/ptm/m/n/10 (-20) .
  []
 
-[13]
-<images//pic1.jpeg, id=525, 467.7475pt x 383.4325pt>
+[14]
+<images//pic1.jpeg, id=542, 467.7475pt x 383.4325pt>
 File: images//pic1.jpeg Graphic file (type jpg)
 <use images//pic1.jpeg>
 Package pdftex.def Info: images//pic1.jpeg  used on input line 106.
 (pdftex.def)             Requested size: 228.19107pt x 187.05861pt.
- [14 <./images//pic1.jpeg>]
-<images//pic2.jpeg, id=538, 1606.0pt x 401.5pt>
+<images//pic2.jpeg, id=544, 1606.0pt x 401.5pt>
 File: images//pic2.jpeg Graphic file (type jpg)
 <use images//pic2.jpeg>
 Package pdftex.def Info: images//pic2.jpeg  used on input line 115.
 (pdftex.def)             Requested size: 228.19107pt x 57.0428pt.
-<images//pic3.jpeg, id=541, 1204.5pt x 903.375pt>
+ [15]
+<images//pic3.jpeg, id=558, 1204.5pt x 903.375pt>
 File: images//pic3.jpeg Graphic file (type jpg)
 <use images//pic3.jpeg>
 Package pdftex.def Info: images//pic3.jpeg  used on input line 126.
 (pdftex.def)             Requested size: 228.19107pt x 171.13301pt.
- [15 <./images//pic2.jpeg> <./images//pic3.jpeg>]) (./conclusion.tex
+ [16 <./images//pic1.jpeg> <./images//pic2.jpeg> <./images//pic3.jpeg>]) (./con
+clusion.tex
 Overfull \hbox (20.89035pt too wide) in paragraph at lines 69--72
 \OT1/ptm/m/n/10 (-20) and depth, fit-ted us-ing \OT1/pcr/m/n/10 scipy.optimize.
 curve[]fit
  []
 
-[16]) (./bibliography.tex [17]) 
+[17]) (./bibliography.tex [18]) 
 AED: lastpage setting LastPage
-[18
+[19
 
 ] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AFA56ED4CCF5706BE0CF7D159EA0B07F;12668.
+(rerunfilecheck)             Checksum: 5E99E647A2B70FF2CDAB547BCD3AD562;13087.
  ) 
 Here is how much of TeX's memory you used:
- 45389 strings out of 480171
- 1028094 string characters out of 5894490
- 1790096 words of memory out of 5000000
- 61965 multiletter control sequences out of 15000+600000
- 536258 words of font info for 385 fonts, out of 8000000 for 9000
+ 45435 strings out of 480171
+ 1028888 string characters out of 5894490
+ 1791041 words of memory out of 5000000
+ 61985 multiletter control sequences out of 15000+600000
+ 537266 words of font info for 397 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  115i,16n,118p,1001b,2645s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -1690,10 +1663,10 @@ ive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 3873475 bytes).
+Output written on main.pdf (19 pages, 3975907 bytes).
 PDF statistics:
- 698 PDF objects out of 1000 (max. 8388607)
- 577 compressed objects within 6 object streams
- 193 named destinations out of 1000 (max. 500000)
- 92135 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 717 PDF objects out of 1000 (max. 8388607)
+ 592 compressed objects within 6 object streams
+ 199 named destinations out of 1000 (max. 500000)
+ 92153 words of extra memory for PDF output out of 106986 (max. 10000000)
 
