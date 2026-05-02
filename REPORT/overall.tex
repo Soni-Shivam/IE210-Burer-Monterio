@@ -64,54 +64,54 @@
 % , , , - title page , , , -
 
 
-% ============================================================
-\section{Introduction}
-% ============================================================
+% % ============================================================
+% \section{Introduction}
+% % ============================================================
 
-\subsection{Motivation}
+% \subsection{Motivation}
 
-In modern Large Language Models (LLMs), the embedding dimension of each Transformer
-attention head ($d_{\text{head}}$) is almost universally set to 64 or 128. This number is
-not the product of mathematical analysis; it is chosen for memory-alignment efficiency on
-GPU hardware. The natural question, largely untouched by practitioners, is: \emph{How much
-of this capacity is actually used?}
+% In modern Large Language Models (LLMs), the embedding dimension of each Transformer
+% attention head ($d_{\text{head}}$) is almost universally set to 64 or 128. This number is
+% not the product of mathematical analysis; it is chosen for memory-alignment efficiency on
+% GPU hardware. The natural question, largely untouched by practitioners, is: \emph{How much
+% of this capacity is actually used?}
 
-Formally, define the self-attention probability matrix for a sequence of $n$ tokens as
-\begin{equation}
-  A = \Softmax\!\left(\frac{QK^\top}{\sqrt{p}}\right), \quad Q, K \in \R^{n \times p},
-  \label{eq:attention}
-\end{equation}
-where $p = d_{\text{head}}$ is the projection dimension. Given a target attention matrix
-$M \in \R^{n \times n}$, what is the \emph{minimum} $p^*$ such that some $Q, K \in
-\R^{n\times p^*}$ satisfies $A = M$?
+% Formally, define the self-attention probability matrix for a sequence of $n$ tokens as
+% \begin{equation}
+%   A = \Softmax\!\left(\frac{QK^\top}{\sqrt{p}}\right), \quad Q, K \in \R^{n \times p},
+%   \label{eq:attention}
+% \end{equation}
+% where $p = d_{\text{head}}$ is the projection dimension. Given a target attention matrix
+% $M \in \R^{n \times n}$, what is the \emph{minimum} $p^*$ such that some $Q, K \in
+% \R^{n\times p^*}$ satisfies $A = M$?
 
-This report documents our exploration of that question. The journey proceeded in three
-conceptual phases:
-\begin{enumerate}[label=\textbf{Phase \arabic*:}]
-  \item \textbf{Classical grounding.} We studied the Burer-Monteiro (BM) factorization for
-        Semidefinite Programs, verifying the Barvinok-Pataki bound and implicit
-        regularization in the symmetric setting.
-  \item \textbf{Extending to attention.} We modelled the Transformer attention head as an
-        asymmetric BM problem, discovered that the Pataki bound completely fails here,
-        and identified the Softmax Jacobian null space as the geometric reason.
-  \item \textbf{Margin Rank Theory.} We replaced the linear matrix-completion framework
-        with a margin-inequality framework, designed a Hard Bottleneck Predictor,
-        validated it on synthetic motifs, and applied it to GPT-2.
-\end{enumerate}
+% This report documents our exploration of that question. The journey proceeded in three
+% conceptual phases:
+% \begin{enumerate}[label=\textbf{Phase \arabic*:}]
+%   \item \textbf{Classical grounding.} We studied the Burer-Monteiro (BM) factorization for
+%         Semidefinite Programs, verifying the Barvinok-Pataki bound and implicit
+%         regularization in the symmetric setting.
+%   \item \textbf{Extending to attention.} We modelled the Transformer attention head as an
+%         asymmetric BM problem, discovered that the Pataki bound completely fails here,
+%         and identified the Softmax Jacobian null space as the geometric reason.
+%   \item \textbf{Margin Rank Theory.} We replaced the linear matrix-completion framework
+%         with a margin-inequality framework, designed a Hard Bottleneck Predictor,
+%         validated it on synthetic motifs, and applied it to GPT-2.
+% \end{enumerate}
 
-\subsection{Research Contributions}
-\begin{itemize}
-  \item Empirical verification of the Barvinok-Pataki phase transition and implicit
-        regularization in the symmetric BM setting.
-  \item A clean ablation demonstrating the ``Geometric Warp Drive'' caused by the Softmax
-        operator.
-  \item A theoretical analysis of the Softmax Jacobian null space and its role in
-        converting constraint counts to margin inequalities.
-  \item The Margin Rank Theory and Hard Bottleneck Predictor algorithm.
-  \item Empirical validation on synthetic motifs and GPT-2, revealing 80--97\%
-        dimensional redundancy.
-  \item Architectural implications for heterogeneous Transformer design.
-\end{itemize}
+% \subsection{Research Contributions}
+% \begin{itemize}
+%   \item Empirical verification of the Barvinok-Pataki phase transition and implicit
+%         regularization in the symmetric BM setting.
+%   \item A clean ablation demonstrating the ``Geometric Warp Drive'' caused by the Softmax
+%         operator.
+%   \item A theoretical analysis of the Softmax Jacobian null space and its role in
+%         converting constraint counts to margin inequalities.
+%   \item The Margin Rank Theory and Hard Bottleneck Predictor algorithm.
+%   \item Empirical validation on synthetic motifs and GPT-2, revealing 80--97\%
+%         dimensional redundancy.
+%   \item Architectural implications for heterogeneous Transformer design.
+% \end{itemize}
 
 % ============================================================
 \section{Executive Summary}
@@ -370,11 +370,11 @@ Our results show that three distinct regions are visible in the success-rate hea
   \label{fig:phase_transition}
 \end{figure}
 
-These results cleanly replicate for $n \in \{3,5,6\}$ as well, confirming the theoretical
-prediction. Attempting to scale the penalty-method BM solver to $n \geq 7$ without a
-continuation strategy causes systematic failure due to Jacobian ill-conditioning, the
-``straightjacket effect'' (exponentially shrinking feasible space), and an origin trap from
-near-zero initialization.
+% These results cleanly replicate for $n \in \{3,5,6\}$ as well, confirming the theoretical
+% prediction. Attempting to scale the penalty-method BM solver to $n \geq 7$ without a
+% continuation strategy causes systematic failure due to Jacobian ill-conditioning, the
+% ``straightjacket effect'' (exponentially shrinking feasible space), and an origin trap from
+% near-zero initialization.
 
 \subsection{Thinking About BM in Machine Learning: Implicit Regularization}
 
@@ -646,24 +646,24 @@ loose, it is inapplicable to this setting.
   this inapplicability.
 \end{remark}
 
-\subsection{Why? The Softmax Jacobian Null Space}
-\label{sec:softmax_null}
+% \subsection{Why? The Softmax Jacobian Null Space}
+% \label{sec:softmax_null}
 
-The Softmax function maps row logits $z \in \R^n$ to probabilities $s = \Softmax(z)$,
-satisfying $\sum_j s_j = 1$. Its Jacobian is
-\begin{equation}
-  J = \diag(s) - ss^\top \in \R^{n \times n}.
-\end{equation}
-Evaluating $J$ on the all-ones vector:
-\begin{equation}
-  J\mathbf{1} = (\diag(s) - ss^\top)\mathbf{1} = s - s = 0.
-\end{equation}
-Therefore $\mathbf{1} \in \ker(J)$. Uniform translation of logits has zero effect on the
-Softmax output: the operator natively \emph{absorbs} all $n$ row-sum constraints. These $n$
-degrees of freedom are freed from constraint satisfaction and can instead be used for spatial
-embedding of the token manifold.
+% The Softmax function maps row logits $z \in \R^n$ to probabilities $s = \Softmax(z)$,
+% satisfying $\sum_j s_j = 1$. Its Jacobian is
+% \begin{equation}
+%   J = \diag(s) - ss^\top \in \R^{n \times n}.
+% \end{equation}
+% Evaluating $J$ on the all-ones vector:
+% \begin{equation}
+%   J\mathbf{1} = (\diag(s) - ss^\top)\mathbf{1} = s - s = 0.
+% \end{equation}
+% Therefore $\mathbf{1} \in \ker(J)$. Uniform translation of logits has zero effect on the
+% Softmax output: the operator natively \emph{absorbs} all $n$ row-sum constraints. These $n$
+% degrees of freedom are freed from constraint satisfaction and can instead be used for spatial
+% embedding of the token manifold.
 
-In the classical (linear) setting, satisfying $n^{2}$ equality constraints requires $rank(L)=n$. With Softmax, the effective constraint count is reduced to $m_{eff} = n^{2} - n = n(n-1)$. The corrected Barvinok-Pataki bound evaluates to $p^{*}(p^{*}+1)/2 \le n(n-1)$. For $n=20$ ($m_{eff}=380$), this bounds the inner rank at $p^{*} \le 27$. While this theoretical upper bound remains loose, the algebraic reduction mathematically opens the door for the massive dimensional collapse observed empirically.
+% In the classical (linear) setting, satisfying $n^{2}$ equality constraints requires $rank(L)=n$. With Softmax, the effective constraint count is reduced to $m_{eff} = n^{2} - n = n(n-1)$. The corrected Barvinok-Pataki bound evaluates to $p^{*}(p^{*}+1)/2 \le n(n-1)$. For $n=20$ ($m_{eff}=380$), this bounds the inner rank at $p^{*} \le 27$. While this theoretical upper bound remains loose, the algebraic reduction mathematically opens the door for the massive dimensional collapse observed empirically.
 
 \subsection{Empirical Exploration: Comparing Parameters}
 \label{sec:param_comparison}
