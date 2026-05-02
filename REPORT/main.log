@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 08:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1372,6 +1372,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 ! Undefined control sequence.
+<recently read> \@Abstract 
+                           
+l.103 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
 <recently read> \@Keywords 
                            
 l.103 
@@ -1645,11 +1656,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D02CB435211775D79519773E8FD86186;13607.
  ) 
 Here is how much of TeX's memory you used:
- 45418 strings out of 480171
- 1028644 string characters out of 5894490
- 1790991 words of memory out of 5000000
+ 45413 strings out of 480171
+ 1028602 string characters out of 5894490
+ 1790988 words of memory out of 5000000
  61979 multiletter control sequences out of 15000+600000
- 537059 words of font info for 391 fonts, out of 8000000 for 9000
+ 535779 words of font info for 388 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  115i,16n,118p,1001b,2645s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -1666,10 +1677,10 @@ ive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 3983194 bytes).
+Output written on main.pdf (18 pages, 3983392 bytes).
 PDF statistics:
  719 PDF objects out of 1000 (max. 8388607)
  595 compressed objects within 6 object streams
  198 named destinations out of 1000 (max. 500000)
- 92164 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 90116 words of extra memory for PDF output out of 106986 (max. 10000000)
 
